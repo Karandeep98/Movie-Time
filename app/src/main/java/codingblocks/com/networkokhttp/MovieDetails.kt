@@ -6,10 +6,11 @@ data class MovieDetails (
     val profile_path:String
 )
 data class Cast(val cast:ArrayList<MovieDetails>)
-data class SimilarMovieDetails (
-    val title:String,
-    val vote_average:Float,
-    val poster_path:String
-)
 
-data class Similar(val results:ArrayList<SimilarMovieDetails>)
+data class Trailers(
+    val key:String,
+    val name:String
+
+)
+data class Trailerarray(val results:ArrayList<Trailers>)
+

@@ -7,6 +7,20 @@
         android:layout_height="match_parent"
         tools:context=".Details"
 android:orientation="vertical">
+
+    <ScrollView android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:orientation="vertical">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:text="Trailer"
+                      android:gravity="center"
+                      android:textSize="25sp"
+                      android:textStyle="bold"/>
+            <androidx.recyclerview.widget.RecyclerView android:layout_width="wrap_content"
+                                                       android:layout_height="wrap_content"
+                                                       android:layout_weight="1"
+                                                       android:id="@+id/rview3"/>
+
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
     android:text="Cast"
               android:gravity="center"
@@ -17,9 +31,19 @@ android:orientation="vertical">
                                                android:layout_height="wrap_content"
                                                android:layout_weight="1"
                                                android:id="@+id/rview"/>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+              android:text="Similar Movies"
+              android:gravity="center"
+              android:textSize="25sp"
+              android:textStyle="bold"
+    />
     <androidx.recyclerview.widget.RecyclerView android:layout_width="wrap_content"
                                                android:layout_height="wrap_content"
                                                android:layout_weight="1"
                                                android:id="@+id/rview2"/>
+
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

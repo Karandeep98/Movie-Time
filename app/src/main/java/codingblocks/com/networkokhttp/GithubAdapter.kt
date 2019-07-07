@@ -2,17 +2,20 @@ package codingblocks.com.networkokhttp
 
 import android.content.Context
 import android.content.Intent
+import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
+import androidx.core.content.edit
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_github.view.*
 
 class GithubAdapter( val context: Context, private val arrayList: ArrayList<GithubResponse>)
     : RecyclerView.Adapter<GithubAdapter.GithubViewHolder>() {
+//    val prefs= PreferenceManager.getDefaultSharedPreferences(context)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubViewHolder {
         val inflater = LayoutInflater.from(context)
         return GithubViewHolder(inflater.inflate(R.layout.item_github, parent, false))
@@ -32,9 +35,12 @@ inner class GithubViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     init {
         itemView.setOnClickListener {
-            Toast.makeText(context, currentuser!!.title + "clicked!",Toast.LENGTH_LONG ).show()
+//            Toast.makeText(context, currentuser!!.title + "clicked!",Toast.LENGTH_LONG ).show()
             val detail= Intent(context,Details::class.java)
             detail.putExtra("ID", currentuser!!.id)
+//            prefs.edit {
+//                putString("ID", currentuser!!.id.toString())
+//            }
             context.startActivity(detail)
         }
     }
@@ -45,9 +51,9 @@ inner class GithubViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
         this.currentuser = user
         this.currentposition = position
         with(itemView) {
-            titletv.text = "Title: " + user.title
+            titletv.text = user.title
             ratingtv.text = "⭐ " + user.vote_average.toString() + "/10"
-            Picasso.get().load("https://image.tmdb.org/t/p/w500" + user.poster_path).into(img)
+            Picasso.get().load("https://image.tmdb.org/t/p/original" + user.backdrop_path).into(img)
         }
 //        with(itemView){
 //            streettv.text="\nID: "+user.id+"\nName: "+user.name+"\nUsername: "+

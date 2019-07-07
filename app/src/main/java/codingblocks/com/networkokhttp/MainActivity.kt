@@ -114,7 +114,7 @@ class MainActivity : AppCompatActivity() {
                 runOnUiThread {
                     //                    tv.text=response.body().toString()
                     rview2.layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
-                    rview2.adapter = GithubAdapter(this@MainActivity, response.body()!!.results)
+                    rview2.adapter = GithubAdapter2(this@MainActivity, response.body()!!.results)
 //                    Picasso.get().load(response.body()?.Poster.toString()).into(image)
 
                 }
@@ -152,7 +152,7 @@ class MainActivity : AppCompatActivity() {
                 runOnUiThread {
                     //                    tv.text=response.body().toString()
                     rview4.layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
-                    rview4.adapter = GithubAdapter(this@MainActivity, response.body()!!.results)
+                    rview4.adapter = GithubAdapter2(this@MainActivity, response.body()!!.results)
 //                    Picasso.get().load(response.body()?.Poster.toString()).into(image)
 
                 }

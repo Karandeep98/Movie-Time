@@ -4,21 +4,21 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content">
     <!--<TextView android:layout_width="match_parent" android:layout_height="wrap_content"-->
-              <!--android:id="@+id/streettv"-->
-              <!--android:textSize="20sp"/>-->
+    <!--android:id="@+id/streettv"-->
+    <!--android:textSize="20sp"/>-->
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
               android:id="@+id/titletv"
-              android:textSize="16sp"
-    android:layout_marginLeft="10dp"/>
+              android:textSize="12sp"
+              android:layout_marginLeft="10dp"/>
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
               android:id="@+id/ratingtv"
-              android:textSize="16sp"
-    android:layout_marginLeft="10dp"/>
+              android:textSize="12sp"
+              android:layout_marginLeft="10dp"/>
 
-    <ImageView android:layout_width="360dp" android:layout_height="250dp"
+    <ImageView android:layout_width="match_parent" android:layout_height="wrap_content"
                android:id="@+id/img"
-    android:layout_marginRight="5dp"
-    android:layout_marginLeft="5dp"/>
+               android:layout_marginRight="5dp"
+    />
 
 
 </LinearLayout>
