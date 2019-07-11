@@ -158,6 +158,12 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+        searchbutton.setOnClickListener {
+            val a=Intent(this,Search::class.java)
+            a.putExtra("searchtext",et.text.toString())
+            startActivity(a)
+
+        }
 
 
     }

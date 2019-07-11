@@ -1,6 +1,8 @@
 package codingblocks.com.networkokhttp
 
 import android.content.Context
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,11 +25,23 @@ import kotlinx.android.synthetic.main.item_github2.view.*
             holder.bind(user, position)
         }
 
-     class GithubViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+     inner class GithubViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+          var currentuser: MovieDetails? =null
+init{
+    itemView.setOnClickListener {
+//        Log.i("tagcharacter",currentuser?.character)
+//        Log.i("tagid",currentuser!!.id.toString())
 
+        val l=Intent(context,Castdetails::class.java)
+//        Log.i("tagl",l.toString())
+        l.putExtra("castID",currentuser!!.id)
+
+        context.startActivity(l)
+    }
+}
 
         fun bind(user: MovieDetails, position: Int) {
-
+            this.currentuser = user
             with(itemView) {
                 charactertv.text = user.character
                 nametv.text = user.name

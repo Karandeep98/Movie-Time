@@ -7,10 +7,20 @@
         android:layout_height="match_parent"
         tools:context=".Details"
 android:orientation="vertical">
+    <androidx.appcompat.widget.Toolbar android:layout_width="match_parent"
+                                       android:layout_height="?actionBarSize"
+                                       android:id="@+id/toolbar"
+                                       android:background="@color/colorPrimary">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:id="@+id/toolbarimage"/>
 
+    </androidx.appcompat.widget.Toolbar>
     <ScrollView android:layout_width="wrap_content" android:layout_height="wrap_content">
         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:orientation="vertical">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:id="@+id/tv"/>
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                       android:text="Trailer"
                       android:gravity="center"
@@ -26,7 +36,7 @@ android:orientation="vertical">
               android:gravity="center"
               android:textSize="25sp"
               android:textStyle="bold"
-    android:id="@+id/tv"/>
+    />
     <androidx.recyclerview.widget.RecyclerView android:layout_width="wrap_content"
                                                android:layout_height="wrap_content"
                                                android:layout_weight="1"

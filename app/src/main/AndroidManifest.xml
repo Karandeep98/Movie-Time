@@ -12,8 +12,16 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".Details"
+        <activity android:name=".Search"
         android:parentActivityName=".MainActivity">
+        </activity>
+        <activity
+                android:name=".Castdetails"
+                android:parentActivityName=".Castdetails">
+        </activity>
+        <activity
+                android:name=".Details"
+                android:parentActivityName=".MainActivity">
         </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
