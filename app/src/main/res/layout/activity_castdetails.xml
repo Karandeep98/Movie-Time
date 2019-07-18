@@ -16,14 +16,51 @@ android:orientation="vertical">
     <ScrollView android:layout_width="wrap_content" android:layout_height="wrap_content">
         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:orientation="vertical">
-
+<ImageView android:layout_width="match_parent" android:layout_height="match_parent"
+android:id="@+id/img"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/tvname"
+                      android:textSize="20sp"
+            android:textStyle="bold"/>
+<LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+android:orientation="horizontal">
 
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:id="@+id/tv"/>
-    <TextView android:layout_width="wrap_content" android:layout_height="match_parent"
+    android:text="\nAge: "
+    android:textSize="16sp"
+    android:textStyle="bold"/>
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:id="@+id/tv"
+    android:textSize="16sp"/>
+</LinearLayout>
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="\nBirthPlace: "
+            android:textStyle="bold"
+            android:textSize="16sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:id="@+id/tv2"
+                android:textSize="16sp"
+                android:textStyle="italic"/>
+            </LinearLayout>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:text="\nBiography:\n "/>
+            <TextView android:layout_width="wrap_content" android:layout_height="200dp"
+            android:id="@+id/tv3"
+            android:textStyle="italic"/>
+    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
     android:text="Movie Cast"
     android:textSize="25sp"
     android:textStyle="bold"
+              android:gravity="center"
+              android:layout_marginBottom="20dp"
+              android:layout_marginTop="20dp"
     />
     <androidx.recyclerview.widget.RecyclerView android:layout_width="wrap_content"
                                                android:layout_height="wrap_content"

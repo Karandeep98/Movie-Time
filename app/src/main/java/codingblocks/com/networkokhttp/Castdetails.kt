@@ -3,6 +3,7 @@ package codingblocks.com.networkokhttp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_castdetails.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -38,9 +39,12 @@ class Castdetails : AppCompatActivity() {
             ) {
                 runOnUiThread {
                     toolbar.title=response.body()?.name
+                    tvname.text=response.body()!!.name
+                    Picasso.get().load("https://image.tmdb.org/t/p/w500"+response.body()!!.profile_path).into(img)
                     val age = 2019-response.body()?.birthday?.substring(0,4)!!.toInt()
-                    tv.text="\n\nAge: "+age+"\nBirthPlace: "+response.body()?.place_of_birth+
-                            "\nBiography\n"+response.body()?.biography
+                    tv.text="\n"+age.toString()
+                    tv2.text="\n"+response.body()?.place_of_birth
+                      tv3.text= response.body()?.biography
                 }
             }
         })

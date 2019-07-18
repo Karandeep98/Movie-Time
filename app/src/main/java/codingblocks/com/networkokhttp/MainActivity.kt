@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.item_github.*
 import okhttp3.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -35,7 +36,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
+        favbt.setOnClickListener {
+            val l=Intent(this@MainActivity,Room::class.java)
+            l.putExtra("favlist",1)
+            startActivity(l)
+        }
 //        okhttp with normal callback
 //        val client = OkHttpClient()
 //        val request = Request.Builder()
@@ -158,6 +163,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
+//        searchview.OnQueryTextListener=searchview. {
+//            val a=Intent(this,Search::class.java)
+//            a.putExtra("searchtext",searchview.query.toString())
+//            startActivity(a)
+//        }
         searchbutton.setOnClickListener {
             val a=Intent(this,Search::class.java)
             a.putExtra("searchtext",et.text.toString())
@@ -165,6 +175,6 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-
     }
 }
+

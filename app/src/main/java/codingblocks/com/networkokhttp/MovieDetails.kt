@@ -26,6 +26,7 @@ data class Overview(
     val poster_path:String,
     val vote_average:Float,
     val backdrop_path:String,
+    val id:Int,
     val genres:ArrayList<Genres>
 
 )
@@ -37,7 +38,8 @@ data class Castinfo(
     val name:String,
     val biography:String,
     val place_of_birth:String,
-    val birthday:String
+    val birthday:String,
+    val profile_path:String
 )
 data class Moviecast(
     val character:String,

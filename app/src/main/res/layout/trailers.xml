@@ -7,7 +7,9 @@
 android:id="@+id/bt"
 android:layout_marginLeft="5dp"
 />
-    <TextView android:layout_width="match_parent" android:layout_height="50dp"
+    <TextView android:layout_width="200dp" android:layout_height="wrap_content"
     android:id="@+id/tv"
-    android:layout_marginLeft="5dp"/>
+    android:layout_marginLeft="5dp"
+    android:gravity="center"
+    android:textStyle="bold"/>
 </LinearLayout>

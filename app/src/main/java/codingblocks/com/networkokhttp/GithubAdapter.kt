@@ -43,6 +43,7 @@ inner class GithubViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 //            }
             context.startActivity(detail)
         }
+
     }
 
     fun bind(user: GithubResponse, position: Int) {

@@ -11,21 +11,41 @@ android:orientation="vertical">
                                        android:layout_height="?actionBarSize"
                                        android:id="@+id/toolbar"
                                        android:background="@color/colorPrimary">
-        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:id="@+id/toolbarimage"/>
 
     </androidx.appcompat.widget.Toolbar>
     <ScrollView android:layout_width="wrap_content" android:layout_height="wrap_content">
         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:orientation="vertical">
+            <ImageView android:layout_width="wrap_content" android:layout_height="221dp"
+            android:id="@+id/img"
+            />
+<TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+android:textStyle="bold"
+android:textSize="18sp"
+android:id="@+id/tvtitle"
+android:gravity="center"
+android:layout_marginTop="10dp"/>
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
             android:textSize="16sp"
             android:id="@+id/tv"/>
+            <CheckBox android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:id="@+id/favbt"
+            android:text="Mark as Favourite"/>
+            <!--<Button android:layout_width="match_parent" android:layout_height="wrap_content"-->
+            <!--android:text="Add to Favourites"-->
+            <!--android:id="@+id/favbt"/>-->
+            <!--<ListView-->
+
+                    <!--android:id="@+id/lv"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"/>-->
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                       android:text="Trailer"
                       android:gravity="center"
                       android:textSize="25sp"
-                      android:textStyle="bold"/>
+                      android:textStyle="bold"
+                      android:layout_marginTop="30dp"
+            android:id="@+id/tvtrailer"/>
             <androidx.recyclerview.widget.RecyclerView android:layout_width="wrap_content"
                                                        android:layout_height="wrap_content"
                                                        android:layout_weight="1"
@@ -36,6 +56,7 @@ android:orientation="vertical">
               android:gravity="center"
               android:textSize="25sp"
               android:textStyle="bold"
+              android:layout_marginTop="30dp"
     />
     <androidx.recyclerview.widget.RecyclerView android:layout_width="wrap_content"
                                                android:layout_height="wrap_content"
@@ -46,6 +67,8 @@ android:orientation="vertical">
               android:gravity="center"
               android:textSize="25sp"
               android:textStyle="bold"
+              android:id="@+id/tvsimilar"
+              android:layout_marginTop="30dp"
     />
     <androidx.recyclerview.widget.RecyclerView android:layout_width="wrap_content"
                                                android:layout_height="wrap_content"

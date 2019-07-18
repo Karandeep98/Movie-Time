@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
               android:orientation="vertical"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content">
     <!--<TextView android:layout_width="match_parent" android:layout_height="wrap_content"-->
     <!--android:id="@+id/streettv"-->
     <!--android:textSize="20sp"/>-->
-    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-              android:id="@+id/titletv"
-              android:textSize="12sp"
-              android:layout_marginLeft="10dp"/>
+
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
               android:id="@+id/ratingtv"
               android:textSize="12sp"
-              android:layout_marginLeft="10dp"/>
+              android:layout_marginLeft="10dp"
+    />
 
     <ImageView android:layout_width="match_parent" android:layout_height="wrap_content"
                android:id="@+id/img"
+               android:src="@color/black"
                android:layout_marginRight="5dp"
     />
+    <TextView android:layout_width="180dp" android:layout_height="wrap_content"
+              android:id="@+id/titletv"
+              android:gravity="center"
+              android:textStyle="bold"
+              android:layout_marginBottom="20dp"
+    />
+
+
 
 
 </LinearLayout>

@@ -1,8 +1,11 @@
 package codingblocks.com.networkokhttp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.util.Log
+import androidx.core.content.edit
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_details.*
@@ -27,6 +30,17 @@ class Details : AppCompatActivity() {
 
 
         val service = retrofitClient.create(GithubService::class.java)
+//        val db by lazy {
+//            androidx.room.Room.databaseBuilder(this,AppDatabase::class.java,"todo.db")
+//                .allowMainThreadQueries()
+//                .fallbackToDestructiveMigration()
+//                .build()
+//        }
+//        var favlist=db.tododao().getalltask() as ArrayList<Todo>
+//        val adapter=TaskAdapter(favlist,this)
+//        lv.adapter=adapter
+
+//        var favlist= arrayListOf<Int>()
 
         service.overview(pos).enqueue(object : Callback<Overview> {
             override fun onFailure(call: Call<Overview>, t: Throwable) {
@@ -40,7 +54,8 @@ class Details : AppCompatActivity() {
             ) {
                 runOnUiThread {
                     toolbar.title=response.body()!!.original_title
-//                    Picasso.get().load("https://image.tmdb.org/t/p/w500"+response.body()!!.backdrop_path).into(toolbarimage)
+                    tvtitle.text=response.body()!!.original_title
+                    Picasso.get().load("https://image.tmdb.org/t/p/original"+response.body()!!.backdrop_path).into(img)
                     tv.text="\n\n⭐ "+ response.body()!!.vote_average+"/10\n\nPlot:  "+ response.body()!!.overview+"\n" +
                            "\nRelease Date: "+response.body()!!.release_date+"\n\nRuntime: "+
                     response.body()!!.runtime/60 +" hrs " +response.body()!!.runtime%60+" mins"+"\n\nGenres: "
@@ -49,6 +64,29 @@ class Details : AppCompatActivity() {
                     tv.text= tv.text.toString() +response.body()!!.genres[i].name+", "
                 }
                   tv.text=tv.text.substring(0,tv.text.length-2) //to remove the extra comma
+
+//                    fav.setOnClickListener {
+//                        if(fav.isChecked) {
+//                            db.tododao().insert(Todo(id=response.body()!!.id,check = true))
+//                            favlist=db.tododao().getalltask() as ArrayList<Todo>
+//
+////                            favlist.add(Todo(response.body()!!.id,true))
+//                        }
+//                        else{
+//                            db.tododao().deletetask(Todo(id=response.body()!!.id,check=true))
+//                            favlist=db.tododao().getalltask() as ArrayList<Todo>
+//
+//                        }
+////                            favlist.remove(Todo(response.body()!!.id,true))
+//
+//                    }
+
+                    favbt.setOnClickListener {
+//                        adapter.updateTasks(favlist)
+                        val l=Intent(this@Details,Room::class.java)
+                        l.putExtra("favlist",response.body()!!.id)
+                        startActivity(l)
+                    }
                 }
             }
         })
@@ -67,6 +105,8 @@ class Details : AppCompatActivity() {
                     rview3.layoutManager = LinearLayoutManager(this@Details, LinearLayoutManager.HORIZONTAL,false)
                     rview3.adapter = MovieAdapter2(this@Details, response.body()!!.results)
 //                    Picasso.get().load(response.body()?.Poster.toString()).into(image)
+        if(response.body()!!.results.isEmpty())
+                tvtrailer.text=""
 
                 }
             }
@@ -122,7 +162,8 @@ class Details : AppCompatActivity() {
                     rview2.layoutManager = LinearLayoutManager(this@Details,LinearLayoutManager.HORIZONTAL,false)
                     rview2.adapter = GithubAdapter2(this@Details, response.body()!!.results)
 //                    Picasso.get().load(response.body()?.Poster.toString()).into(image)
-
+                    if(response.body()!!.results.isEmpty())
+                        tvsimilar.text=""
                 }
             }
         })
