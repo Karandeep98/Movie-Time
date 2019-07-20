@@ -1,12 +1,16 @@
 package codingblocks.com.networkokhttp
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.util.Log
+import android.view.View
 import androidx.core.content.edit
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_details.*
 import retrofit2.Call
@@ -41,11 +45,12 @@ class Details : AppCompatActivity() {
 //        lv.adapter=adapter
 
 //        var favlist= arrayListOf<Int>()
-
         service.overview(pos).enqueue(object : Callback<Overview> {
             override fun onFailure(call: Call<Overview>, t: Throwable) {
-                tv.text="Loading failed!"
-                tv.text=tv.text.toString()+t.cause.toString()
+//                tv.text="Loading failed!"
+//                tv.text=tv.text.toString()+t.cause.toString()
+                Snackbar.make(root,"No Internet Connection", Snackbar.LENGTH_INDEFINITE).show()
+
             }
 
             override fun onResponse(
@@ -53,40 +58,40 @@ class Details : AppCompatActivity() {
                 response: Response<Overview>
             ) {
                 runOnUiThread {
+
+//                    prg.setProgress(false)
                     toolbar.title=response.body()!!.original_title
                     tvtitle.text=response.body()!!.original_title
-                    Picasso.get().load("https://image.tmdb.org/t/p/original"+response.body()!!.backdrop_path).into(img)
+                    Picasso.get().load("https://image.tmdb.org/t/p/original"+response.body()?.backdrop_path).into(img)
+//                    if(response.body()?.backdrop_path==null){
+//                        Picasso.get().load("https://image.tmdb.org/t/p/original"+response.body()?.poster_path).into(img)
+//
+//                    }
                     tv.text="\n\n⭐ "+ response.body()!!.vote_average+"/10\n\nPlot:  "+ response.body()!!.overview+"\n" +
                            "\nRelease Date: "+response.body()!!.release_date+"\n\nRuntime: "+
                     response.body()!!.runtime/60 +" hrs " +response.body()!!.runtime%60+" mins"+"\n\nGenres: "
-
+                    prg.visibility = View.GONE
+//                    prg.setProgress(100,false)
                 for(i in 0 until response.body()!!.genres.size ){
                     tv.text= tv.text.toString() +response.body()!!.genres[i].name+", "
                 }
                   tv.text=tv.text.substring(0,tv.text.length-2) //to remove the extra comma
 
-//                    fav.setOnClickListener {
-//                        if(fav.isChecked) {
-//                            db.tododao().insert(Todo(id=response.body()!!.id,check = true))
-//                            favlist=db.tododao().getalltask() as ArrayList<Todo>
-//
-////                            favlist.add(Todo(response.body()!!.id,true))
-//                        }
-//                        else{
-//                            db.tododao().deletetask(Todo(id=response.body()!!.id,check=true))
-//                            favlist=db.tododao().getalltask() as ArrayList<Todo>
-//
-//                        }
-////                            favlist.remove(Todo(response.body()!!.id,true))
-//
-//                    }
-
+                    share.setOnClickListener {
+//                        val j=Intent(Intent.ACTION_VIEW, Uri.parse("http://www.imdb.com/title/${response.body()?.imdb_id}"))
+//                        startActivity(j)
+                        val intent = Intent(Intent.ACTION_SEND)
+                        intent.type = "text/plain"
+                        intent.putExtra(Intent.EXTRA_TEXT, "http://www.imdb.com/title/${response.body()?.imdb_id}")
+                        startActivity(Intent.createChooser(intent, "Share with"))
+                    }
                     favbt.setOnClickListener {
 //                        adapter.updateTasks(favlist)
                         val l=Intent(this@Details,Room::class.java)
                         l.putExtra("favlist",response.body()!!.id)
                         startActivity(l)
                     }
+
                 }
             }
         })

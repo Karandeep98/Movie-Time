@@ -2,6 +2,7 @@ package codingblocks.com.networkokhttp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_castdetails.*
@@ -45,6 +46,7 @@ class Castdetails : AppCompatActivity() {
                     tv.text="\n"+age.toString()
                     tv2.text="\n"+response.body()?.place_of_birth
                       tv3.text= response.body()?.biography
+                    prg.visibility=View.GONE
                 }
             }
         })

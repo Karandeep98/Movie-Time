@@ -27,6 +27,7 @@ data class Overview(
     val vote_average:Float,
     val backdrop_path:String,
     val id:Int,
+    val imdb_id:String,
     val genres:ArrayList<Genres>
 
 )

@@ -6,19 +6,36 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".Details"
-android:orientation="vertical">
+android:orientation="vertical"
+android:id="@+id/root">
     <androidx.appcompat.widget.Toolbar android:layout_width="match_parent"
                                        android:layout_height="?actionBarSize"
                                        android:id="@+id/toolbar"
                                        android:background="@color/colorPrimary">
 
     </androidx.appcompat.widget.Toolbar>
+    <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content"
+                 android:id="@+id/prg"
+                 android:layout_marginTop="250dp"
+                 android:layout_gravity="center"
+    android:layout_marginBottom="350dp"/>
     <ScrollView android:layout_width="wrap_content" android:layout_height="wrap_content">
         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:orientation="vertical">
-            <ImageView android:layout_width="wrap_content" android:layout_height="221dp"
+            <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+
+            <ImageView android:layout_width="400dp" android:layout_height="223dp"
             android:id="@+id/img"
+                       android:background="@color/gray"
             />
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                           android:src="@drawable/ic_share_black_24dp"
+                           android:id="@+id/share"
+                           android:layout_gravity="right"
+                           android:layout_marginRight="10dp"
+                           android:layout_marginTop="10dp"
+                />
+            </FrameLayout>
 <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
 android:textStyle="bold"
 android:textSize="18sp"

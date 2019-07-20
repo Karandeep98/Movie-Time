@@ -31,7 +31,7 @@ class MovieAdapter2( val context: Context, private val arrayList: ArrayList<Trai
 
         with(itemView) {
             tv.text=user.name
-            Picasso.get().load("https://img.youtube.com/vi/"+user.key+"/0.jpg").into(bt)
+            Picasso.get().load("https://img.youtube.com/vi/"+user.key+"/maxresdefault.jpg").into(bt)
             bt.setOnClickListener {
                 val j= Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v="+user.key))
                 context.startActivity(j)

@@ -33,7 +33,7 @@ class TaskAdapter(var tasks: ArrayList<Todo>,val context: Context) : BaseAdapter
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val inflater= LayoutInflater.from(context)
-        val view=inflater.inflate(R.layout.listdetails,parent,false)
+        val view=inflater.inflate(R.layout.searchlayout,parent,false)
         val title=view.titletv
         val release=view.releasetv
         val overview=view.overviewtv
@@ -60,7 +60,6 @@ class TaskAdapter(var tasks: ArrayList<Todo>,val context: Context) : BaseAdapter
         return view
 
     }
-
     override fun getItem(position: Int): Todo = tasks[position]
 
     override fun getItemId(position: Int): Long = 0

@@ -13,6 +13,12 @@ android:orientation="vertical">
                                        android:background="@color/colorPrimary">
 
     </androidx.appcompat.widget.Toolbar>
+    <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content"
+                 android:id="@+id/prg"
+                 android:layout_marginTop="250dp"
+                 android:layout_gravity="center"
+                 android:layout_marginBottom="350dp"
+              />
     <ScrollView android:layout_width="wrap_content" android:layout_height="wrap_content">
         <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:orientation="vertical">

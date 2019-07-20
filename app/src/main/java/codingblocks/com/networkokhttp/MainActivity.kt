@@ -4,7 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.net.toUri
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,6 +24,10 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
+import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.recyclerview.widget.SnapHelper
+import com.google.android.material.snackbar.Snackbar
+
 
 class MainActivity : AppCompatActivity() {
     val retrofitClient = Retrofit.Builder()
@@ -89,8 +95,11 @@ class MainActivity : AppCompatActivity() {
 //        val userList = arrayListOf<GithubResponse>()
         service.nowShowing().enqueue(object : Callback<Github2> {
             override fun onFailure(call: Call<Github2>, t: Throwable) {
-                tv.text="Loading failed!"
-                tv.text=tv.text.toString()+t.cause.toString()
+                prg.visibility=View.GONE
+//                tv.text="Loading failed!"
+//                tv.text=tv.text.toString()+t.cause?.toString()
+                Snackbar.make(root,"No Internet Connection",Snackbar.LENGTH_INDEFINITE).show()
+
             }
 
             override fun onResponse(
@@ -102,6 +111,10 @@ class MainActivity : AppCompatActivity() {
                     rview.layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
                     rview.adapter = GithubAdapter(this@MainActivity, response.body()!!.results)
 //                    Picasso.get().load(response.body()?.Poster.toString()).into(image)
+                    val snapHelper = PagerSnapHelper()
+                    snapHelper.attachToRecyclerView(rview)
+                    prg.visibility=View.GONE
+
 
                 }
             }
@@ -139,6 +152,8 @@ class MainActivity : AppCompatActivity() {
                     //                    tv.text=response.body().toString()
                     rview3.layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
                     rview3.adapter = GithubAdapter(this@MainActivity, response.body()!!.results)
+                    val snapHelper = PagerSnapHelper()
+                    snapHelper.attachToRecyclerView(rview3)
 //                    Picasso.get().load(response.body()?.Poster.toString()).into(image)
 
                 }
@@ -160,6 +175,7 @@ class MainActivity : AppCompatActivity() {
                     rview4.adapter = GithubAdapter2(this@MainActivity, response.body()!!.results)
 //                    Picasso.get().load(response.body()?.Poster.toString()).into(image)
 
+
                 }
             }
         })
@@ -174,6 +190,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(a)
 
         }
+
 
     }
 }
