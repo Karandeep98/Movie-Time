@@ -20,6 +20,7 @@
 
         <ImageView android:layout_width="375dp" android:layout_height="211dp"
                    android:id="@+id/img"
+                   android:background="@color/gray"
         android:tint="@color/black"
         android:tintMode="multiply"/>
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"

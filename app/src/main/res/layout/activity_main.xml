@@ -9,6 +9,10 @@
 android:orientation="vertical"
 android:id="@+id/root">
 
+    <!--<include-->
+            <!--layout="@layout/activity_navigation"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"/>-->
     <androidx.appcompat.widget.Toolbar android:layout_width="match_parent"
                                        android:layout_height="?actionBarSize"
                                        android:id="@+id/toolbar"
@@ -46,9 +50,9 @@ android:id="@+id/root">
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                   android:id="@+id/tv"
         />
-        <Button android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:text="show favourites"
-        android:id="@+id/favbt"/>
+        <!--<Button android:layout_width="match_parent" android:layout_height="wrap_content"-->
+        <!--android:text="show favourites"-->
+        <!--android:id="@+id/favbt"/>-->
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
         android:text="Now Showing"
         android:textStyle="bold"
@@ -90,4 +94,5 @@ android:id="@+id/rview"/>
                                                    android:id="@+id/rview4"/>
     </LinearLayout>
     </ScrollView>
+
 </LinearLayout>

@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.preference.PreferenceManager
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.core.content.edit
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
@@ -16,11 +17,17 @@ import kotlinx.android.synthetic.main.activity_details.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import androidx.room.Room
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class Details : AppCompatActivity() {
-
+    val db by lazy {
+        Room.databaseBuilder(this,AppDatabase::class.java,"todo.db")
+            .allowMainThreadQueries()
+            .fallbackToDestructiveMigration()
+            .build()
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
@@ -31,7 +38,8 @@ class Details : AppCompatActivity() {
             .baseUrl("https://api.themoviedb.org/3/movie/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-
+        var check = db.tododao().checkrepeat(pos)
+        favbt.isChecked = !check.isEmpty()
 
         val service = retrofitClient.create(GithubService::class.java)
 //        val db by lazy {
@@ -87,9 +95,20 @@ class Details : AppCompatActivity() {
                     }
                     favbt.setOnClickListener {
 //                        adapter.updateTasks(favlist)
-                        val l=Intent(this@Details,Room::class.java)
-                        l.putExtra("favlist",response.body()!!.id)
-                        startActivity(l)
+//                        val l=Intent(this@Details,Room::class.java)
+//                        l.putExtra("favlist",response.body()!!.id)
+//                        startActivity(l)
+                        if(favbt.isChecked){
+                            db.tododao().insert(Todo(id = pos))
+                            Toast.makeText(this@Details, "Movie is added in favourites!", Toast.LENGTH_LONG).show()
+
+                        }
+                        else{
+                            db.tododao().deletetask(Todo(id = pos))
+                            Toast.makeText(this@Details, "Movie is removed from favourites!", Toast.LENGTH_LONG).show()
+
+                        }
+//                        tv.text=tv.text.toString()+favbt.isChecked.toString()
                     }
 
                 }

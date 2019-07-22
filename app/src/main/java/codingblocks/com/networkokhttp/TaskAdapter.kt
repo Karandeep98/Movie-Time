@@ -1,21 +1,21 @@
 package codingblocks.com.networkokhttp
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.listdetails.view.*
+import kotlinx.android.synthetic.main.activity_favourites.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
-class TaskAdapter(var tasks: ArrayList<Todo>,val context: Context) : BaseAdapter(
-
-) {
+class TaskAdapter( val context: Context, private val arrayList: ArrayList<Todo>)
+    : RecyclerView.Adapter<TaskAdapter.GithubViewHolder>() {
     val retrofitClient = Retrofit.Builder()
         .baseUrl("https://api.themoviedb.org/3/movie/")
         .addConverterFactory(GsonConverterFactory.create())
@@ -23,47 +23,53 @@ class TaskAdapter(var tasks: ArrayList<Todo>,val context: Context) : BaseAdapter
 
 
     val service = retrofitClient.create(GithubService::class.java)
-
-//    var todoItemClick:TodoItemClickListner?= null
-//    fun updateTasks(newTasks: ArrayList<Todo>) {
-//        tasks.clear()
-//        tasks.addAll(newTasks)
-//        notifyDataSetChanged()
-//    }
-
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        val inflater= LayoutInflater.from(context)
-        val view=inflater.inflate(R.layout.searchlayout,parent,false)
-        val title=view.titletv
-        val release=view.releasetv
-        val overview=view.overviewtv
-        val poster=view.img
-//        val check=view.cb
-        service.overview(tasks[position].id.toString().toInt()).enqueue(object : Callback<Overview> {
-            override fun onFailure(call: Call<Overview>, t: Throwable) {
-//                tv.text="Loading failed!"
-//                tv.text=tv.text.toString()+t.cause.toString()
-            }
-
-            override fun onResponse(
-                call: Call<Overview>,
-                response: Response<Overview>
-            ) {
-//                listtext.text = tasks[position].id.toString()
-                title.text=response.body()?.original_title
-                release.text=response.body()?.release_date
-                overview.text=response.body()?.overview
-                Picasso.get().load("https://image.tmdb.org/t/p/w500"+response.body()?.poster_path).into(poster)
-
-            }
-        })
-        return view
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubViewHolder {
+        val inflater = LayoutInflater.from(context)
+        return GithubViewHolder(inflater.inflate(R.layout.activity_favourites, parent, false))
 
     }
-    override fun getItem(position: Int): Todo = tasks[position]
 
-    override fun getItemId(position: Int): Long = 0
+    override fun getItemCount(): Int = arrayList.size
 
-    override fun getCount(): Int = tasks.size
+    override fun onBindViewHolder(holder: GithubViewHolder, position: Int) {
+        val user = arrayList[position]
+        holder.bind(user, position)
+    }
 
-}
+    inner class GithubViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var currentuser: Todo? = null
+
+        init {
+            itemView.setOnClickListener {
+                //            Toast.makeText(context, currentuser!!.title + "clicked!",Toast.LENGTH_LONG ).show()
+                val detail= Intent(context,Details::class.java)
+                detail.putExtra("ID", currentuser?.id)
+                context.startActivity(detail)
+
+            }
+
+        }
+
+        fun bind(user: Todo, position: Int) {
+            this.currentuser = user
+            service.overview(arrayList[position].id.toString().toInt()).enqueue(object : Callback<Overview> {
+                override fun onFailure(call: Call<Overview>, t: Throwable) {
+//                tv.text="Loading failed!"
+//                tv.text=tv.text.toString()+t.cause.toString()
+                }
+                override fun onResponse(
+                    call: Call<Overview>,
+                    response: Response<Overview>
+                ) {
+                    with(itemView) {
+                        //                listtext.text = tasks[position].id.toString()
+                        titletv.text = response.body()?.original_title
+//                        releasetv.text = response.body()?.release_date
+//                        overviewtv.text = response.body()?.overview
+                        Picasso.get().load("https://image.tmdb.org/t/p/w500" + response.body()?.poster_path)
+                            .into(img)
+                    }
+                }
+            })
+        }
+    }}

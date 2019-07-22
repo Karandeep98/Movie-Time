@@ -4,11 +4,16 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.core.net.toUri
+import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 //import codingblocks.com.networkokhttp.Client.getUrl
 //import codingblocks.com.networkokhttp.Client.okHttpClient
@@ -26,10 +31,23 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
+import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
+//import kotlinx.android.synthetic.main.activity_main.toolbar
+import kotlinx.android.synthetic.main.activity_navigation.*
+//import kotlinx.android.synthetic.main.app_bar_main.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    override fun onBackPressed() {
+//        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+            drawer_layout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
+    }
     val retrofitClient = Retrofit.Builder()
         .baseUrl("https://api.themoviedb.org/3/movie/")
         .addConverterFactory(GsonConverterFactory.create())
@@ -40,13 +58,20 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_navigation)
+        val toggle = ActionBarDrawerToggle(
+            this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+        )
+        drawer_layout.addDrawerListener(toggle)
+        toggle.syncState()
+//
+        nav_view.setNavigationItemSelectedListener(this)
 
-        favbt.setOnClickListener {
-            val l=Intent(this@MainActivity,Room::class.java)
-            l.putExtra("favlist",1)
-            startActivity(l)
-        }
+//        favbt.setOnClickListener {
+//            val l=Intent(this@MainActivity,Room::class.java)
+//            l.putExtra("favlist",1)
+//            startActivity(l)
+//        }
 //        okhttp with normal callback
 //        val client = OkHttpClient()
 //        val request = Request.Builder()
@@ -192,6 +217,21 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+    }
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.movies -> {
+//                val l = Intent(this, MainActivity::class.java)
+//                startActivity(l)
+            }
+            R.id.fav -> {
+                val l = Intent(this, Room::class.java)
+//                l.putExtra("favlist", 1)
+                startActivity(l)
+            }
+        }
+        drawer_layout.closeDrawer(GravityCompat.START)
+        return true
     }
 }
 

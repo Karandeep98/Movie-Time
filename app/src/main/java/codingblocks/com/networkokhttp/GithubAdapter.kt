@@ -2,6 +2,7 @@ package codingblocks.com.networkokhttp
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
@@ -38,10 +39,8 @@ inner class GithubViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 //            Toast.makeText(context, currentuser!!.title + "clicked!",Toast.LENGTH_LONG ).show()
             val detail= Intent(context,Details::class.java)
             detail.putExtra("ID", currentuser!!.id)
-//            prefs.edit {
-//                putString("ID", currentuser!!.id.toString())
-//            }
             context.startActivity(detail)
+
         }
 
     }
