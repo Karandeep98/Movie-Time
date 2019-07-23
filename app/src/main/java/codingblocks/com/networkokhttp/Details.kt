@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.edit
+import androidx.core.content.getSystemService
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
@@ -20,6 +21,9 @@ import retrofit2.Response
 import androidx.room.Room
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+
+
 
 class Details : AppCompatActivity() {
     val db by lazy {
@@ -39,7 +43,16 @@ class Details : AppCompatActivity() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         var check = db.tododao().checkrepeat(pos)
-        favbt.isChecked = !check.isEmpty()
+//        favbt.isChecked = check.isNotEmpty()
+        if(check.isNotEmpty()) {
+            favfill.visibility = View.VISIBLE
+            favborder.visibility=View.GONE
+        }
+        else if (check.isEmpty()){
+            favborder.visibility = View.VISIBLE
+            favfill.visibility=View.GONE
+        }
+
 
         val service = retrofitClient.create(GithubService::class.java)
 //        val db by lazy {
@@ -58,7 +71,7 @@ class Details : AppCompatActivity() {
 //                tv.text="Loading failed!"
 //                tv.text=tv.text.toString()+t.cause.toString()
                 Snackbar.make(root,"No Internet Connection", Snackbar.LENGTH_INDEFINITE).show()
-
+prg.visibility=View.GONE
             }
 
             override fun onResponse(
@@ -68,16 +81,32 @@ class Details : AppCompatActivity() {
                 runOnUiThread {
 
 //                    prg.setProgress(false)
-                    toolbar.title=response.body()!!.original_title
-                    tvtitle.text=response.body()!!.original_title
+                    toolbar.title=response.body()!!.title
+                    tvtitle.text=response.body()!!.title
                     Picasso.get().load("https://image.tmdb.org/t/p/original"+response.body()?.backdrop_path).into(img)
+                    if(response.body()?.backdrop_path==null){
+                        Picasso.get().load("https://image.tmdb.org/t/p/w500"+response.body()?.poster_path).into(img)
+
+                    }
 //                    if(response.body()?.backdrop_path==null){
 //                        Picasso.get().load("https://image.tmdb.org/t/p/original"+response.body()?.poster_path).into(img)
 //
 //                    }
-                    tv.text="\n\n⭐ "+ response.body()!!.vote_average+"/10\n\nPlot:  "+ response.body()!!.overview+"\n" +
-                           "\nRelease Date: "+response.body()!!.release_date+"\n\nRuntime: "+
-                    response.body()!!.runtime/60 +" hrs " +response.body()!!.runtime%60+" mins"+"\n\nGenres: "
+                    if(response.body()?.vote_average?.toInt()!=0) {
+                        tv.text = "\n\n⭐ " + response.body()!!.vote_average + "/10"
+                    }
+                    tv.text=tv.text.toString()+"\n\nPlot:  "+ response.body()!!.overview+"\n" +
+                           "\nRelease Date: "+response.body()!!.release_date
+                    if(response.body()?.runtime!=0){
+//                        Log.i("movieruntime",response.body()?.runtime)
+                        if(response.body()!!.runtime/60!=0){
+                        tv.text=tv.text.toString()+"\n\nRuntime: "+response.body()!!.runtime/60 +" hrs " +response.body()!!.runtime%60+" mins"
+                                    }
+                        else
+                        tv.text=tv.text.toString()+"\n\nRuntime: "+response.body()!!.runtime%60+" mins"
+                    }
+                    }
+                   tv.text=tv.text.toString() +"\n\nGenres: "
                     prg.visibility = View.GONE
 //                    prg.setProgress(100,false)
                 for(i in 0 until response.body()!!.genres.size ){
@@ -93,27 +122,31 @@ class Details : AppCompatActivity() {
                         intent.putExtra(Intent.EXTRA_TEXT, "http://www.imdb.com/title/${response.body()?.imdb_id}")
                         startActivity(Intent.createChooser(intent, "Share with"))
                     }
-                    favbt.setOnClickListener {
+//                    favbt.setOnClickListener {
 //                        adapter.updateTasks(favlist)
 //                        val l=Intent(this@Details,Room::class.java)
 //                        l.putExtra("favlist",response.body()!!.id)
 //                        startActivity(l)
-                        if(favbt.isChecked){
+//                        if(favbt.isChecked){
+                    favborder.setOnClickListener {
                             db.tododao().insert(Todo(id = pos))
                             Toast.makeText(this@Details, "Movie is added in favourites!", Toast.LENGTH_LONG).show()
-
+                            favfill.visibility=View.VISIBLE
+                            favborder.visibility=View.GONE
                         }
-                        else{
+                        favfill.setOnClickListener {
                             db.tododao().deletetask(Todo(id = pos))
                             Toast.makeText(this@Details, "Movie is removed from favourites!", Toast.LENGTH_LONG).show()
-
+                        favborder.visibility=View.VISIBLE
+                            favfill.visibility=View.GONE
                         }
 //                        tv.text=tv.text.toString()+favbt.isChecked.toString()
-                    }
+//                    }
 
                 }
             }
-        })
+        )
+
         service.trailers(pos).enqueue(object : Callback<Trailerarray> {
             override fun onFailure(call: Call<Trailerarray>, t: Throwable) {
                 tv.text="Loading failed!"
@@ -190,6 +223,14 @@ class Details : AppCompatActivity() {
                         tvsimilar.text=""
                 }
             }
+        })
+        swipeRefresh.setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener {
+//            refreshData() // your code
+            val i =Intent(this,Details::class.java)
+            i.putExtra("ID",pos)
+            finish()
+            startActivity(i)
+            swipeRefresh.isRefreshing = false
         })
 
 

@@ -63,7 +63,7 @@ class TaskAdapter( val context: Context, private val arrayList: ArrayList<Todo>)
                 ) {
                     with(itemView) {
                         //                listtext.text = tasks[position].id.toString()
-                        titletv.text = response.body()?.original_title
+                        titletv.text = response.body()?.title
 //                        releasetv.text = response.body()?.release_date
 //                        overviewtv.text = response.body()?.overview
                         Picasso.get().load("https://image.tmdb.org/t/p/w500" + response.body()?.poster_path)

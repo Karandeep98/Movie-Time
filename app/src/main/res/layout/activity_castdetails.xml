@@ -56,10 +56,22 @@ android:orientation="horizontal">
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:text="\nBiography:\n "/>
-            <TextView android:layout_width="wrap_content" android:layout_height="200dp"
+            android:text="\nBiography:\n "
+            android:gravity="center"
+            android:id="@+id/tv4"
+            android:visibility="gone"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Read More"
+            android:textColor="@color/colorPrimary"
+            android:visibility="visible"
+            android:id="@+id/readmore"
+                      android:textSize="16sp"
+            android:gravity="center"
+            android:layout_marginTop="10dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:id="@+id/tv3"
-            android:textStyle="italic"/>
+            android:textStyle="italic"
+            android:visibility="gone"/>
     <TextView android:layout_width="match_parent" android:layout_height="match_parent"
     android:text="Movie Cast"
     android:textSize="25sp"

@@ -11,13 +11,13 @@ interface GithubService {
 //    fun listUsers(): Call<Github2>
 
 
-    @GET("now_playing?api_key=b315d3231fba4b90ca67901413855fb7&language=en-US&page=1")
-    fun nowShowing(): Call<Github2>
+    @GET("now_playing?api_key=b315d3231fba4b90ca67901413855fb7&language=en-US&page")
+    fun nowShowing(@Query("page")p:Int): Call<Github2>
 
-    @GET("popular?api_key=b315d3231fba4b90ca67901413855fb7&language=en-US&page=3")
+    @GET("popular?api_key=b315d3231fba4b90ca67901413855fb7&language=en-US&page=1")
     fun popularMovies(): Call<Github2>
 
-    @GET("upcoming?api_key=b315d3231fba4b90ca67901413855fb7&language=en-US&page=2")
+    @GET("upcoming?api_key=b315d3231fba4b90ca67901413855fb7&language=en-US&page=1&region=US")
     fun upcoming(): Call<Github2>
 
     @GET("top_rated?api_key=b315d3231fba4b90ca67901413855fb7&language=en-US&page=1")

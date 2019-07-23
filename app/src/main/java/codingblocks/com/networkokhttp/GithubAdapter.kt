@@ -16,45 +16,58 @@ import kotlinx.android.synthetic.main.item_github.view.*
 
 class GithubAdapter( val context: Context, private val arrayList: ArrayList<GithubResponse>)
     : RecyclerView.Adapter<GithubAdapter.GithubViewHolder>() {
-//    val prefs= PreferenceManager.getDefaultSharedPreferences(context)
+    //    val prefs= PreferenceManager.getDefaultSharedPreferences(context)
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubViewHolder {
         val inflater = LayoutInflater.from(context)
         return GithubViewHolder(inflater.inflate(R.layout.item_github, parent, false))
 
     }
-
     override fun getItemCount(): Int = arrayList.size
-
     override fun onBindViewHolder(holder: GithubViewHolder, position: Int) {
-        val user = arrayList[position]
-        holder.bind(user, position)
-    }
+//if(arrayList[position].backdrop_path.isNullOrBlank()){
+//    arrayList.removeAt(position)
+////    notifyItemRemoved(position)
+////    notifyItemRangeChanged(position,arrayList.size)
+//    notifyDataSetChanged()
+//}
+    val user = arrayList[position]
+    holder.bind(user, position)
 
-inner class GithubViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    var currentuser: GithubResponse? = null
-    var currentposition = 0
+}
 
-    init {
-        itemView.setOnClickListener {
-//            Toast.makeText(context, currentuser!!.title + "clicked!",Toast.LENGTH_LONG ).show()
-            val detail= Intent(context,Details::class.java)
-            detail.putExtra("ID", currentuser!!.id)
-            context.startActivity(detail)
+
+    inner class GithubViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var currentuser: GithubResponse? = null
+        var currentposition = 0
+
+        init {
+            itemView.setOnClickListener {
+                //            Toast.makeText(context, currentuser!!.title + "clicked!",Toast.LENGTH_LONG ).show()
+                val detail = Intent(context, Details::class.java)
+                detail.putExtra("ID", currentuser!!.id)
+                context.startActivity(detail)
+
+            }
 
         }
 
-    }
+        fun bind(user: GithubResponse, position: Int) {
 
-    fun bind(user: GithubResponse, position: Int) {
+            this.currentuser = user
+            this.currentposition = position
+            with(itemView) {
 
+                    titletv.text = user.title
+                    if (user.vote_average.toInt() != 0) {
+                        ratingtv.text = "⭐ " + user.vote_average.toString() + "/10"
+                    }
+                    Picasso.get().load("https://image.tmdb.org/t/p/original" + user.backdrop_path).into(img)
+                if(user.backdrop_path.isNullOrBlank()){
+                    Picasso.get().load("https://image.tmdb.org/t/p/w500" + user.poster_path).into(img)
+                }
+                }
 
-        this.currentuser = user
-        this.currentposition = position
-        with(itemView) {
-            titletv.text = user.title
-            ratingtv.text = "⭐ " + user.vote_average.toString() + "/10"
-            Picasso.get().load("https://image.tmdb.org/t/p/original" + user.backdrop_path).into(img)
-        }
 //        with(itemView){
 //            streettv.text="\nID: "+user.id+"\nName: "+user.name+"\nUsername: "+
 //                    user.username+"\nEmail: "+user.email+"\nStreet: "+user.street+
@@ -63,8 +76,10 @@ inner class GithubViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
 //        }
 
+        }
     }
-}}
+}
+
 
 
 

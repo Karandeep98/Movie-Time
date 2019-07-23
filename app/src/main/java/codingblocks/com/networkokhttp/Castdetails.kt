@@ -45,6 +45,11 @@ class Castdetails : AppCompatActivity() {
                     val age = 2019-response.body()?.birthday?.substring(0,4)!!.toInt()
                     tv.text="\n"+age.toString()
                     tv2.text="\n"+response.body()?.place_of_birth
+                    readmore.setOnClickListener {
+                        readmore.visibility=View.GONE
+                        tv3.visibility=View.VISIBLE
+                        tv4.visibility=View.VISIBLE
+                    }
                       tv3.text= response.body()?.biography
                     prg.visibility=View.GONE
                 }

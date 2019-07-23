@@ -15,11 +15,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.net.toUri
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-//import codingblocks.com.networkokhttp.Client.getUrl
-//import codingblocks.com.networkokhttp.Client.okHttpClient
-//import codingblocks.com.networkokhttp.Client.okhttpCallback
-import com.google.gson.Gson
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_github.*
 import okhttp3.*
@@ -35,18 +30,34 @@ import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 //import kotlinx.android.synthetic.main.activity_main.toolbar
 import kotlinx.android.synthetic.main.activity_navigation.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+
 //import kotlinx.android.synthetic.main.app_bar_main.*
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
+    private var doubleBackPressed = false
     override fun onBackPressed() {
 //        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-            drawer_layout.closeDrawer(GravityCompat.START)
-        } else {
-            super.onBackPressed()
-        }
+
+            if (doubleBackPressed) {
+                super.onBackPressed()
+            }
+            else {
+                if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+                        drawer_layout.closeDrawer(GravityCompat.START)
+                    }
+                else{
+                doubleBackPressed = true
+                Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show()
+                GlobalScope.launch {
+                    delay(2000)
+                    doubleBackPressed = false
+                }
+                }
+            }
     }
     val retrofitClient = Retrofit.Builder()
         .baseUrl("https://api.themoviedb.org/3/movie/")
@@ -118,7 +129,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 //            })
             //Retrofit
 //        val userList = arrayListOf<GithubResponse>()
-        service.nowShowing().enqueue(object : Callback<Github2> {
+        service.nowShowing(1).enqueue(object : Callback<Github2> {
             override fun onFailure(call: Call<Github2>, t: Throwable) {
                 prg.visibility=View.GONE
 //                tv.text="Loading failed!"
@@ -215,9 +226,30 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             startActivity(a)
 
         }
+        viewAllNowShowing.setOnClickListener {
+            val a=Intent(this,ViewAll::class.java)
+            a.putExtra("category","nowshowing")
+            startActivity(a)
+        }
+        viewAllPopular.setOnClickListener {
+            val a=Intent(this,ViewAll::class.java)
+            a.putExtra("category","popular")
+            startActivity(a)
+        }
+        viewAllUpcoming.setOnClickListener {
+            val a=Intent(this,ViewAll::class.java)
+            a.putExtra("category","upcoming")
+            startActivity(a)
+        }
+        viewAllToprated.setOnClickListener {
+            val a=Intent(this,ViewAll::class.java)
+            a.putExtra("category","toprated")
+            startActivity(a)
+        }
 
 
     }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.movies -> {
@@ -229,9 +261,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 //                l.putExtra("favlist", 1)
                 startActivity(l)
             }
+            R.id.about -> {
+                val l = Intent(this, About::class.java)
+                startActivity(l)
+            }
         }
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
-}
 
+}

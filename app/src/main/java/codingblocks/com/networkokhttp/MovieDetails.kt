@@ -19,7 +19,7 @@ data class Trailers(
 data class Trailerarray(val results:ArrayList<Trailers>)
 
 data class Overview(
-    val original_title:String,
+    val title:String,
     val overview:String,
     val release_date:String,
     val runtime:Int,

@@ -16,7 +16,6 @@ android:id="@+id/root">
     <androidx.appcompat.widget.Toolbar android:layout_width="match_parent"
                                        android:layout_height="?actionBarSize"
                                        android:id="@+id/toolbar"
-                                       app:title="Popcorn"
                                        android:background="@color/colorPrimary">
         <!--<androidx.appcompat.widget.SearchView android:layout_width="wrap_content"-->
                                               <!--android:layout_height="wrap_content"-->
@@ -43,7 +42,7 @@ android:id="@+id/root">
                       android:hint="Search Movies              "/>
             <Button android:layout_width="wrap_content" android:layout_height="match_parent"
                     android:id="@+id/searchbutton"
-                    android:text="Search"
+                 android:text="Search"
                     android:layout_toRightOf="@+id/et"/>
         </RelativeLayout>
 
@@ -53,41 +52,92 @@ android:id="@+id/root">
         <!--<Button android:layout_width="match_parent" android:layout_height="wrap_content"-->
         <!--android:text="show favourites"-->
         <!--android:id="@+id/favbt"/>-->
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
         android:text="Now Showing"
         android:textStyle="bold"
+                  android:textColor="@color/fullblack"
         android:textSize="25sp"
         android:layout_margin="10dp"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:id="@+id/viewAllNowShowing"
+            android:text="View All"
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="140dp"/>
 
-
+        </LinearLayout>
 <androidx.recyclerview.widget.RecyclerView android:layout_width="wrap_content"
                                            android:layout_height="wrap_content"
                                            android:layout_weight="1"
 
 android:id="@+id/rview"/>
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                   android:text="Popular"
                   android:textStyle="bold"
+                  android:textColor="@color/fullblack"
                   android:textSize="25dp"
                   android:layout_margin="10dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:id="@+id/viewAllPopular"
+                  android:text="View All"
+                  android:textSize="18sp"
+                  android:textColor="@color/colorPrimaryDark"
+                  android:layout_marginTop="10dp"
+                  android:layout_marginLeft="200dp"/>
+        </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView android:layout_width="wrap_content"
                                                android:layout_height="wrap_content"
                                                android:layout_weight="1"
     android:id="@+id/rview2"/>
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                   android:text="Upcoming"
                   android:textStyle="bold"
+                  android:textColor="@color/fullblack"
                   android:textSize="25dp"
                   android:layout_margin="10dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:id="@+id/viewAllUpcoming"
+                  android:text="View All"
+                  android:textSize="18sp"
+                  android:textColor="@color/colorPrimaryDark"
+                  android:layout_marginTop="10dp"
+                  android:layout_marginLeft="180dp"/>
+        </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView android:layout_width="wrap_content"
                                                    android:layout_height="wrap_content"
                                                    android:layout_weight="1"
                                                    android:id="@+id/rview3"/>
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
                   android:text="Top Rated"
+                  android:textColor="@color/fullblack"
                   android:textStyle="bold"
                   android:textSize="25dp"
                   android:layout_margin="10dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:id="@+id/viewAllToprated"
+                  android:text="View All"
+                  android:textSize="18sp"
+                  android:textColor="@color/colorPrimaryDark"
+                  android:layout_marginTop="10dp"
+                  android:layout_marginLeft="180dp"/>
+        </LinearLayout>
         <androidx.recyclerview.widget.RecyclerView android:layout_width="wrap_content"
                                                    android:layout_height="wrap_content"
                                                    android:layout_weight="1"
