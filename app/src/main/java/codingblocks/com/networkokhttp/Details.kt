@@ -108,6 +108,7 @@ prg.visibility=View.GONE
                     }
                    tv.text=tv.text.toString() +"\n\nGenres: "
                     prg.visibility = View.GONE
+                scrollview.visibility=View.VISIBLE
 //                    prg.setProgress(100,false)
                 for(i in 0 until response.body()!!.genres.size ){
                     tv.text= tv.text.toString() +response.body()!!.genres[i].name+", "

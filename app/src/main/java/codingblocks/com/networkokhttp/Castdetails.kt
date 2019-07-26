@@ -41,10 +41,16 @@ class Castdetails : AppCompatActivity() {
                 runOnUiThread {
                     toolbar.title=response.body()?.name
                     tvname.text=response.body()!!.name
-                    Picasso.get().load("https://image.tmdb.org/t/p/w500"+response.body()!!.profile_path).into(img)
-                    val age = 2019-response.body()?.birthday?.substring(0,4)!!.toInt()
-                    tv.text="\n"+age.toString()
-                    tv2.text="\n"+response.body()?.place_of_birth
+                    Picasso.get().load("https://image.tmdb.org/t/p/w500"+response.body()?.profile_path).into(img)
+                    if(response.body()?.birthday!=null) {
+                        val age = 2019 - response.body()?.birthday?.substring(0, 4)!!.toInt()
+                        tv.text="\n"+age.toString()
+                        tv.visibility=View.VISIBLE
+                    }
+            if(response.body()?.place_of_birth!=null) {
+                tv2.text = "\n" + response.body()?.place_of_birth
+                tv2.visibility=View.VISIBLE
+            }
                     readmore.setOnClickListener {
                         readmore.visibility=View.GONE
                         tv3.visibility=View.VISIBLE

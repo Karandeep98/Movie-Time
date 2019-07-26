@@ -45,6 +45,12 @@ class Room : AppCompatActivity() {
 //            }
 //        }
         var list=db.tododao().getalltask() as ArrayList<Todo>
+        Log.i("favlist",list.toString())
+        if(list.isEmpty()){
+            emptyimg.visibility=View.VISIBLE
+            tvempty.visibility=View.VISIBLE
+        }
+
         rview.layoutManager = GridLayoutManager(this,3, GridLayoutManager.VERTICAL,false)
         rview.adapter=TaskAdapter(this,list)
             }

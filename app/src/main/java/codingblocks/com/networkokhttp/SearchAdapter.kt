@@ -43,6 +43,9 @@ class SearchAdapter(val context: Context, private val arrayList: ArrayList<Searc
                 titletv.text = user.title
                 releasetv.text = "Release Date: "+user.release_date
                 overviewtv.text="\n"+user.overview
+                if(user.overview.isNullOrBlank()){
+                    overviewtv.text = "                                                                   "
+                }
                 Picasso.get().load("https://image.tmdb.org/t/p/w500" + user.poster_path).into(img)
 
             }

@@ -29,10 +29,10 @@ class ViewAll : AppCompatActivity() {
         var p = intent.getStringExtra("category")
         when (p) {
             "nowshowing"-> {
-//        for (i in 1..3) {
+                var list:ArrayList<GithubResponse> = arrayListOf()
+        for (i in 1..5) {
             toolbar.title="Now Showing Movies"
-
-                service.nowShowing(1).enqueue(object : Callback<Github2> {
+                service.nowShowing(i).enqueue(object : Callback<Github2> {
                     override fun onFailure(call: Call<Github2>, t: Throwable) {
 //                prg.visibility = View.GONE
 //                tv.text="Loading failed!"
@@ -45,14 +45,19 @@ class ViewAll : AppCompatActivity() {
                         call: Call<Github2>,
                         response: Response<Github2>
                     ) {
+
                         runOnUiThread {
+                            list.addAll(response.body()!!.results)
+
                             rview.layoutManager = GridLayoutManager(this@ViewAll, 3, GridLayoutManager.VERTICAL, false)
-                            rview.adapter = ViewallAdapter(this@ViewAll, response.body()!!.results)
+//                            rview.adapter = ViewallAdapter(this@ViewAll, response.body()!!.results)
+                            rview.adapter=ViewallAdapter(this@ViewAll,list)
                 prg.visibility=View.GONE
                         }
                     }
                 })
             }
+        }
             "popular"-> {
                 toolbar.title="Popular Movies"
                 service.popularMovies().enqueue(object : Callback<Github2> {

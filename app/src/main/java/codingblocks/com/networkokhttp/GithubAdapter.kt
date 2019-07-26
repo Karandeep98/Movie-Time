@@ -25,15 +25,9 @@ class GithubAdapter( val context: Context, private val arrayList: ArrayList<Gith
     }
     override fun getItemCount(): Int = arrayList.size
     override fun onBindViewHolder(holder: GithubViewHolder, position: Int) {
-//if(arrayList[position].backdrop_path.isNullOrBlank()){
-//    arrayList.removeAt(position)
-////    notifyItemRemoved(position)
-////    notifyItemRangeChanged(position,arrayList.size)
-//    notifyDataSetChanged()
-//}
+
     val user = arrayList[position]
     holder.bind(user, position)
-
 }
 
 

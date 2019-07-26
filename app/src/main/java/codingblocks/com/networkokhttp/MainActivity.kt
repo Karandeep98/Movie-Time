@@ -4,17 +4,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ImageView
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.core.net.toUri
 import androidx.core.view.GravityCompat
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_github.*
 import okhttp3.*
@@ -24,8 +22,6 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
-import androidx.recyclerview.widget.PagerSnapHelper
-import androidx.recyclerview.widget.SnapHelper
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 //import kotlinx.android.synthetic.main.activity_main.toolbar
@@ -33,6 +29,7 @@ import kotlinx.android.synthetic.main.activity_navigation.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.util.ArrayList
 
 //import kotlinx.android.synthetic.main.app_bar_main.*
 
@@ -40,8 +37,8 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private var doubleBackPressed = false
     override fun onBackPressed() {
-//        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
 
+//        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
             if (doubleBackPressed) {
                 super.onBackPressed()
             }
@@ -59,6 +56,26 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
             }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main,menu)
+        val searchitem=menu?.findItem(R.id.menu_search)
+        val searchview=searchitem?.actionView as androidx.appcompat.widget.SearchView
+        searchview.queryHint="Search Movies"
+        searchview.setOnQueryTextListener(object: androidx.appcompat.widget.SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                val a= Intent(this@MainActivity,Search::class.java)
+                a.putExtra("searchtext",p0)
+                startActivity(a)
+                return true
+            }
+            override fun onQueryTextChange(p0: String?): Boolean {
+                return true
+            }
+        })
+        return super.onCreateOptionsMenu(menu)
+    }
+
     val retrofitClient = Retrofit.Builder()
         .baseUrl("https://api.themoviedb.org/3/movie/")
         .addConverterFactory(GsonConverterFactory.create())
@@ -70,6 +87,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_navigation)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val toggle = ActionBarDrawerToggle(
             this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
         )
@@ -150,6 +169,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     val snapHelper = PagerSnapHelper()
                     snapHelper.attachToRecyclerView(rview)
                     prg.visibility=View.GONE
+                    scrollview.visibility=View.VISIBLE
 
 
                 }
@@ -166,7 +186,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 response: Response<Github2>
             ) {
                 runOnUiThread {
-                    //                    tv.text=response.body().toString()
+
+
+
                     rview2.layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
                     rview2.adapter = GithubAdapter2(this@MainActivity, response.body()!!.results)
 //                    Picasso.get().load(response.body()?.Poster.toString()).into(image)
@@ -187,7 +209,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 runOnUiThread {
                     //                    tv.text=response.body().toString()
                     rview3.layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
-                    rview3.adapter = GithubAdapter(this@MainActivity, response.body()!!.results)
+                    rview3.adapter = GithubAdapter(this@MainActivity, response.body()!!.results.filter {
+                        it.backdrop_path != null
+                    } as ArrayList<GithubResponse>)
                     val snapHelper = PagerSnapHelper()
                     snapHelper.attachToRecyclerView(rview3)
 //                    Picasso.get().load(response.body()?.Poster.toString()).into(image)
@@ -215,17 +239,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
             }
         })
-//        searchview.OnQueryTextListener=searchview. {
+//        searchbutton.setOnClickListener {
 //            val a=Intent(this,Search::class.java)
-//            a.putExtra("searchtext",searchview.query.toString())
+//            a.putExtra("searchtext",et.text.toString())
 //            startActivity(a)
+//
 //        }
-        searchbutton.setOnClickListener {
-            val a=Intent(this,Search::class.java)
-            a.putExtra("searchtext",et.text.toString())
-            startActivity(a)
-
-        }
         viewAllNowShowing.setOnClickListener {
             val a=Intent(this,ViewAll::class.java)
             a.putExtra("category","nowshowing")

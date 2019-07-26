@@ -16,6 +16,18 @@
                   android:gravity="center"
                   android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"/>
+    <ImageView android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:id="@+id/emptyimg"
+    android:src="@drawable/listempty"
+    android:visibility="gone"/>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:id="@+id/tvempty"
+    android:text="Your favourites list is empty!"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    android:visibility="gone"
+              android:gravity="center"
+    android:textColor="@color/fullblack"/>
 
     <!--<ListView android:layout_width="match_parent" android:layout_height="wrap_content"-->
     <!--android:id="@+id/lv"-->

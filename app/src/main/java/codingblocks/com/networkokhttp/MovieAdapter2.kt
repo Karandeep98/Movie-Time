@@ -3,6 +3,7 @@ package codingblocks.com.networkokhttp
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,9 +32,13 @@ class MovieAdapter2( val context: Context, private val arrayList: ArrayList<Trai
 
         with(itemView) {
             tv.text=user.name
+
             Picasso.get().load("https://img.youtube.com/vi/"+user.key+"/maxresdefault.jpg").into(bt)
+            Log.i("trailerpath",bt.toString())
             bt.setOnClickListener {
-                val j= Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v="+user.key))
+                val j=Intent(context,Youtubeplay::class.java)
+                j.putExtra("path",user.key)
+//                val j= Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v="+user.key))
                 context.startActivity(j)
             }
 
