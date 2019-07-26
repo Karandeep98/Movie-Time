@@ -1,6 +1,10 @@
 package codingblocks.com.networkokhttp
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -24,6 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.messaging.FirebaseMessaging
 //import kotlinx.android.synthetic.main.activity_main.toolbar
 import kotlinx.android.synthetic.main.activity_navigation.*
 import kotlinx.coroutines.GlobalScope
@@ -96,6 +101,24 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 //
         nav_view.setNavigationItemSelectedListener(this)
+
+        //code for push notifications
+        val nm = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+            nm.createNotificationChannel(
+                NotificationChannel(
+                    "first", "default",
+                    NotificationManager.IMPORTANCE_DEFAULT
+                )
+            )
+        FirebaseMessaging.getInstance().subscribeToTopic("general")
+            .addOnCompleteListener { task ->
+                var msg = "Successful!"
+                if (!task.isSuccessful) {
+                    msg = "Failed!"
+                }
+                Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+            }
 
 //        favbt.setOnClickListener {
 //            val l=Intent(this@MainActivity,Room::class.java)
