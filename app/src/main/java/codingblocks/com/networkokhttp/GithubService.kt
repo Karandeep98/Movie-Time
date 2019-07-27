@@ -43,6 +43,9 @@ interface GithubService {
     @GET("search/movie?api_key=b315d3231fba4b90ca67901413855fb7&language=en-US&query&page=1&include_adult=false")
     fun search(@Query("query")q:String):Call<Searcharray>
 
+    @GET("{Id}/reviews?api_key=b315d3231fba4b90ca67901413855fb7&language=en-US&page=1")
+    fun reviews(@Path("Id")id:Int):Call<ReviewArray>
+
 
 
 

@@ -83,7 +83,7 @@ prg.visibility=View.GONE
 //                    prg.setProgress(false)
                     toolbar.title=response.body()!!.title
                     tvtitle.text=response.body()!!.title
-                    Picasso.get().load("https://image.tmdb.org/t/p/original"+response.body()?.backdrop_path).into(img)
+                    Picasso.get().load("https://image.tmdb.org/t/p/original"+response.body()?.backdrop_path).fit().centerCrop().into(img)
                     if(response.body()?.backdrop_path==null){
                         Picasso.get().load("https://image.tmdb.org/t/p/w500"+response.body()?.poster_path).into(img)
 
@@ -234,7 +234,11 @@ prg.visibility=View.GONE
             swipeRefresh.isRefreshing = false
         })
 
-
+reviews.setOnClickListener {
+    val k=Intent(this,Reviews::class.java)
+    k.putExtra("moviedID",pos)
+    startActivity(k)
+}
     }
 
 

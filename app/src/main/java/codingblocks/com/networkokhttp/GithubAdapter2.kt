@@ -48,7 +48,7 @@ class GithubAdapter2( val context: Context, private val arrayList: ArrayList<Git
             with(itemView) {
                 titletv.text = user.title
                 ratingtv.text = "⭐ " + user.vote_average.toString() + "/10"
-                Picasso.get().load("https://image.tmdb.org/t/p/w500" + user.poster_path).into(img)
+                Picasso.get().load("https://image.tmdb.org/t/p/w500" + user.poster_path).fit().centerCrop().into(img)
             }
 //        with(itemView){
 //            streettv.text="\nID: "+user.id+"\nName: "+user.name+"\nUsername: "+

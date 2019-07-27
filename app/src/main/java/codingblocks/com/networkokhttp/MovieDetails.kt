@@ -58,3 +58,9 @@ data class Searchdetails(
 val id:Int
 )
 data class Searcharray(val results:ArrayList<Searchdetails>)
+
+data class Reviewdetails(
+    val author:String,
+    val content:String
+)
+data class ReviewArray(val results:ArrayList<Reviewdetails>)

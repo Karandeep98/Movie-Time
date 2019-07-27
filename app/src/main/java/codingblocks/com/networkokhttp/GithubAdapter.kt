@@ -56,7 +56,7 @@ class GithubAdapter( val context: Context, private val arrayList: ArrayList<Gith
                     if (user.vote_average.toInt() != 0) {
                         ratingtv.text = "⭐ " + user.vote_average.toString() + "/10"
                     }
-                    Picasso.get().load("https://image.tmdb.org/t/p/original" + user.backdrop_path).into(img)
+                    Picasso.get().load("https://image.tmdb.org/t/p/original" + user.backdrop_path).fit().centerCrop().into(img)
                 if(user.backdrop_path.isNullOrBlank()){
                     Picasso.get().load("https://image.tmdb.org/t/p/w500" + user.poster_path).into(img)
                 }

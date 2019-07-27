@@ -1,39 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:orientation="horizontal"
+              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginBottom="10dp">
+              android:layout_height="wrap_content">
     <androidx.cardview.widget.CardView android:layout_width="match_parent"
                                        android:layout_height="wrap_content"
                                        app:cardElevation="10dp"
                                        app:cardCornerRadius="5dp"
                                        android:layout_margin="5dp">
-
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
-
-
-    <ImageView android:layout_width="160dp" android:layout_height="200dp"
-    android:id="@+id/img"
-               android:layout_marginLeft="-20dp"
-   />
-
-    <LinearLayout android:layout_width="match_parent" android:layout_height="200dp"
-    android:orientation="vertical"
-    >
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+android:orientation="vertical">
 
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:id="@+id/titletv"
-              android:textSize="20sp"
-    android:textStyle="bold"/>
+    android:id="@+id/contenttv"
+              android:textSize="15sp"
+              android:layout_marginLeft="10dp"
+              android:layout_marginRight="5dp"
+   android:maxLines="5"
+    android:layout_marginTop="20dp"/>
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-              android:id="@+id/releasetv"/>
+    android:gravity="center"
+              android:text="Read More.. "
+    android:textColor="@color/colorPrimary"
+    android:id="@+id/readmore"
+    android:visibility="visible"/>
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-              android:maxLines="6"
-              android:id="@+id/overviewtv"/>
-    </LinearLayout>
+              android:id="@+id/nametv"
+              android:textStyle="bold"
+              android:textSize="16sp"
+              android:visibility="gone"
+              android:layout_marginLeft="10dp"
+    />
 </LinearLayout>
     </androidx.cardview.widget.CardView>
-
 </LinearLayout>

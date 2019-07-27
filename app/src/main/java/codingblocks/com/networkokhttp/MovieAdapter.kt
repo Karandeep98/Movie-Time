@@ -45,7 +45,7 @@ init{
             with(itemView) {
                 charactertv.text = user.character
                 nametv.text = user.name
-                Picasso.get().load("https://image.tmdb.org/t/p/w500" + user.profile_path).into(img)
+                Picasso.get().load("https://image.tmdb.org/t/p/w500" + user.profile_path).fit().centerCrop().into(img)
                 if (user.profile_path == null) {
                     Picasso.get().load(
                         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaYY" +
