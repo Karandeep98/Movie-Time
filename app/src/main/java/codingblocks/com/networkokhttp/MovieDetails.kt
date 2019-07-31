@@ -1,7 +1,5 @@
 package codingblocks.com.networkokhttp
 
-import android.renderscript.Int2
-import android.system.Int64Ref
 
 data class MovieDetails (
     val character:String,
@@ -28,8 +26,13 @@ data class Overview(
     val backdrop_path:String,
     val id:Int,
     val imdb_id:String,
-    val genres:ArrayList<Genres>
+    val genres:ArrayList<Genres>,
+val production_companies:ArrayList<ProductionCompanies>
 
+)
+data class ProductionCompanies(
+    val name: String,
+    val logo_path:String
 )
 data class Genres(
     val name: String

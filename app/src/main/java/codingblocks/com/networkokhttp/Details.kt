@@ -71,7 +71,7 @@ class Details : AppCompatActivity() {
 //                tv.text="Loading failed!"
 //                tv.text=tv.text.toString()+t.cause.toString()
                 Snackbar.make(root,"No Internet Connection", Snackbar.LENGTH_INDEFINITE).show()
-prg.visibility=View.GONE
+            prg.visibility=View.GONE
             }
 
             override fun onResponse(
@@ -79,19 +79,24 @@ prg.visibility=View.GONE
                 response: Response<Overview>
             ) {
                 runOnUiThread {
+                    if(response.body()?.production_companies!!.isEmpty()){
+                        tvproduction.visibility=View.GONE
+                    }
+                    rviewproduction.layoutManager = LinearLayoutManager(this@Details, LinearLayoutManager.HORIZONTAL,false)
+                    rviewproduction.adapter = ProductionAdapter(this@Details, response.body()!!.production_companies.filter {
+                        it.logo_path!=null
+                    } as ArrayList<ProductionCompanies>)
+
 
 //                    prg.setProgress(false)
                     toolbar.title=response.body()!!.title
                     tvtitle.text=response.body()!!.title
                     Picasso.get().load("https://image.tmdb.org/t/p/original"+response.body()?.backdrop_path).fit().centerCrop().into(img)
                     if(response.body()?.backdrop_path==null){
-                        Picasso.get().load("https://image.tmdb.org/t/p/w500"+response.body()?.poster_path).into(img)
+                        Picasso.get().load("https://image.tmdb.org/t/p/w500"+response.body()?.poster_path).fit().centerCrop().into(img)
 
                     }
-//                    if(response.body()?.backdrop_path==null){
-//                        Picasso.get().load("https://image.tmdb.org/t/p/original"+response.body()?.poster_path).into(img)
-//
-//                    }
+
                     if(response.body()?.vote_average?.toInt()!=0) {
                         tv.text = "\n\n⭐ " + response.body()!!.vote_average + "/10"
                     }
@@ -105,6 +110,7 @@ prg.visibility=View.GONE
                         else
                         tv.text=tv.text.toString()+"\n\nRuntime: "+response.body()!!.runtime%60+" mins"
                     }
+
                     }
                    tv.text=tv.text.toString() +"\n\nGenres: "
                     prg.visibility = View.GONE
@@ -114,6 +120,9 @@ prg.visibility=View.GONE
                     tv.text= tv.text.toString() +response.body()!!.genres[i].name+", "
                 }
                   tv.text=tv.text.substring(0,tv.text.length-2) //to remove the extra comma
+
+
+                    //list of production companies
 
                     share.setOnClickListener {
 //                        val j=Intent(Intent.ACTION_VIEW, Uri.parse("http://www.imdb.com/title/${response.body()?.imdb_id}"))

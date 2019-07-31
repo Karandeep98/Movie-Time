@@ -198,7 +198,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
             }
         })
-        service.popularMovies().enqueue(object : Callback<Github2> {
+        service.popularMovies(1).enqueue(object : Callback<Github2> {
             override fun onFailure(call: Call<Github2>, t: Throwable) {
                 tv.text="Loading failed!"
                 tv.text=tv.text.toString()+t.cause.toString()
@@ -210,8 +210,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             ) {
                 runOnUiThread {
 
-
-
                     rview2.layoutManager = LinearLayoutManager(this@MainActivity,LinearLayoutManager.HORIZONTAL,false)
                     rview2.adapter = GithubAdapter2(this@MainActivity, response.body()!!.results)
 //                    Picasso.get().load(response.body()?.Poster.toString()).into(image)
@@ -219,7 +217,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
             }
         })
-        service.upcoming().enqueue(object : Callback<Github2> {
+        service.upcoming(1).enqueue(object : Callback<Github2> {
             override fun onFailure(call: Call<Github2>, t: Throwable) {
                 tv.text="Loading failed!"
                 tv.text=tv.text.toString()+t.cause.toString()
@@ -242,7 +240,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 }
             }
         })
-        service.toprated().enqueue(object : Callback<Github2> {
+        service.toprated(1).enqueue(object : Callback<Github2> {
             override fun onFailure(call: Call<Github2>, t: Throwable) {
                 tv.text="Loading failed!"
                 tv.text=tv.text.toString()+t.cause.toString()

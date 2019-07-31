@@ -8,26 +8,27 @@ import retrofit2.http.Query
 
 interface GithubService {
     //    @GET("https://api.github.com/search/users?q=karandeep")
-//    fun listUsers(): Call<Github2>
+    //    fun listUsers(): Call<Github2>
 
 
     @GET("now_playing?api_key=b315d3231fba4b90ca67901413855fb7&language=en-US&page")
     fun nowShowing(@Query("page")p:Int): Call<Github2>
 
-    @GET("popular?api_key=b315d3231fba4b90ca67901413855fb7&language=en-US&page=1")
-    fun popularMovies(): Call<Github2>
+    @GET("popular?api_key=b315d3231fba4b90ca67901413855fb7&language=en-US&page")
+    fun popularMovies(@Query("page")p:Int): Call<Github2>
 
-    @GET("upcoming?api_key=b315d3231fba4b90ca67901413855fb7&language=en-US&page=1&region=US")
-    fun upcoming(): Call<Github2>
+    @GET("upcoming?api_key=b315d3231fba4b90ca67901413855fb7&language=en-US&page&region=US")
+    fun upcoming(@Query("page")p:Int): Call<Github2>
 
-    @GET("top_rated?api_key=b315d3231fba4b90ca67901413855fb7&language=en-US&page=1")
-    fun toprated(): Call<Github2>
+    @GET("top_rated?api_key=b315d3231fba4b90ca67901413855fb7&language=en-US&page")
+    fun toprated(@Query("page")p:Int): Call<Github2>
 
     @GET("{Id}/credits?api_key=b315d3231fba4b90ca67901413855fb7")
     fun cast(@Path("Id")id:Int): Call<Cast>
 
     @GET("{Id}/similar?api_key=b315d3231fba4b90ca67901413855fb7&language=en-US&page=1")
     fun similarmovies(@Path("Id")id:Int): Call<Github2>
+
     @GET("{Id}/videos?api_key=b315d3231fba4b90ca67901413855fb7&language=en-US&page=1")
     fun trailers(@Path("Id")id:Int): Call<Trailerarray>
 
@@ -45,9 +46,5 @@ interface GithubService {
 
     @GET("{Id}/reviews?api_key=b315d3231fba4b90ca67901413855fb7&language=en-US&page=1")
     fun reviews(@Path("Id")id:Int):Call<ReviewArray>
-
-
-
-
 
 }
