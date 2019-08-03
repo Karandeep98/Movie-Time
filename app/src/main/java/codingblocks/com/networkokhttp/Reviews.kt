@@ -17,15 +17,16 @@ class Reviews : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reviews)
-        val id=intent.getIntExtra("moviedID",0)
+        val id=intent.getIntExtra("ID",0)
+        val type=intent.getStringExtra("type")
 
         val retrofitClient = Retrofit.Builder()
-            .baseUrl("https://api.themoviedb.org/3/movie/")
+            .baseUrl("https://api.themoviedb.org/3/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
         val service = retrofitClient.create(GithubService::class.java)
 
-        service.reviews(id).enqueue(object : Callback<ReviewArray>{
+        service.reviews(id,type).enqueue(object : Callback<ReviewArray>{
             override fun onFailure(call: Call<ReviewArray>, t: Throwable) {
 
             }

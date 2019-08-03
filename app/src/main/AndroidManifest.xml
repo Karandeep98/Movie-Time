@@ -12,6 +12,14 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".Tvshows.ViewAllTvShows">
+        </activity>
+        <activity
+                android:name=".Tvshows.TvDetails"
+                android:parentActivityName=".Tvshows.TVMainActivity">
+        </activity>
+        <activity android:name=".Tvshows.TVMainActivity">
+        </activity>
         <activity android:name=".Reviews">
         </activity>
         <activity android:name=".Youtubeplay">

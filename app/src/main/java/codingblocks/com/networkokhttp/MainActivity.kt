@@ -17,6 +17,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.net.toUri
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.*
+import codingblocks.com.networkokhttp.Tvshows.TVMainActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_github.*
 import okhttp3.*
@@ -117,7 +118,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 if (!task.isSuccessful) {
                     msg = "Failed!"
                 }
-                Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
+//                Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
             }
 
 //        favbt.setOnClickListener {
@@ -303,6 +304,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.about -> {
                 val l = Intent(this, About::class.java)
+                startActivity(l)
+            }
+            R.id.tvshows->{
+                val l = Intent(this, TVMainActivity::class.java)
                 startActivity(l)
             }
         }

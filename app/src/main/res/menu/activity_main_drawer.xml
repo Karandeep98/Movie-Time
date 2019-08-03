@@ -8,6 +8,10 @@
                 android:id="@+id/movies"
                 android:icon="@drawable/ic_local_movies_black_24dp"
                 android:title="Movies"/>
+
+        <item android:id="@+id/tvshows"
+              android:icon="@drawable/ic_ondemand_video_black_24dp"
+              android:title="TV Shows"/>
         <item
                 android:id="@+id/fav"
                 android:icon="@drawable/ic_favorite_black_24dp"
@@ -16,5 +20,6 @@
                 android:id="@+id/about"
                 android:icon="@drawable/ic_info_outline_black_24dp"
                 android:title="About"/>
+
     </group>
 </menu>

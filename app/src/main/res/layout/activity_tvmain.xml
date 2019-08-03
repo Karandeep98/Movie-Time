@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Tvshows.TVMainActivity"
+android:id="@+id/root"
+android:orientation="vertical">
+    <androidx.appcompat.widget.Toolbar android:layout_width="match_parent"
+                                       android:layout_height="?actionBarSize"
+                                       android:id="@+id/toolbar"
+                                       android:background="@color/colorPrimary">
+
+    </androidx.appcompat.widget.Toolbar>
+    <ProgressBar android:layout_width="match_parent" android:layout_height="wrap_content"
+                 android:id="@+id/prg"
+                 android:layout_gravity="center_vertical|center_horizontal"
+                 android:layout_marginTop="250dp"
+                 android:visibility="visible"
+    />
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/scrollview"
+    >
+
+   <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+   android:orientation="vertical">
+
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:id="@+id/tv"/>
+       <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+       android:orientation="horizontal">
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:textStyle="bold"
+    android:textColor="@color/fullblack"
+    android:text="Airing Today"
+    android:textSize="20sp"
+              android:layout_weight="1"
+    android:layout_marginLeft="10dp"/>
+           <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+           android:gravity="right"
+           android:text="View All"
+                     android:layout_weight="1"
+                     android:id="@+id/viewAllAiringToday"
+                     android:textSize="15sp"
+           android:textColor="@color/colorPrimary"/>
+       </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView android:layout_width="wrap_content"
+                                               android:layout_height="wrap_content"
+    android:id="@+id/rview">
+    </androidx.recyclerview.widget.RecyclerView>
+       <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+       android:orientation="horizontal">
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+              android:textStyle="bold"
+              android:textColor="@color/fullblack"
+              android:text="On Air"
+              android:layout_weight="1"
+              android:textSize="20sp"
+              android:layout_marginLeft="10dp"/>
+           <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                     android:gravity="right"
+                     android:text="View All"
+                     android:id="@+id/viewAllOnAir"
+                     android:layout_weight="1"
+                     android:textSize="15sp"
+                     android:textColor="@color/colorPrimary"/>
+       </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView android:layout_width="wrap_content"
+                                               android:layout_height="wrap_content"
+                                               android:id="@+id/rview2">
+    </androidx.recyclerview.widget.RecyclerView>
+       <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+       android:orientation="horizontal">
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+              android:textStyle="bold"
+              android:textColor="@color/fullblack"
+              android:text="Popular"
+              android:textSize="25sp"
+              android:layout_weight="1"
+              android:layout_marginLeft="10dp"/>
+           <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                     android:gravity="right"
+                     android:text="View All"
+                     android:id="@+id/viewAllpopulartvshows"
+                     android:layout_weight="1"
+                     android:textSize="15sp"
+                     android:textColor="@color/colorPrimary"/>
+       </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView android:layout_width="wrap_content"
+                                               android:layout_height="wrap_content"
+                                               android:id="@+id/rview3">
+    </androidx.recyclerview.widget.RecyclerView>
+       <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+       android:orientation="horizontal">
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+              android:textStyle="bold"
+              android:textColor="@color/fullblack"
+              android:text="Top Rated"
+              android:layout_weight="1"
+              android:textSize="25sp"
+              android:layout_marginLeft="10dp"/>
+           <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                     android:gravity="right"
+                     android:text="View All"
+                     android:id="@+id/viewAlltopratedtvshows"
+                     android:layout_weight="1"
+                     android:textSize="15sp"
+                     android:textColor="@color/colorPrimary"/>
+       </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView android:layout_width="wrap_content"
+                                               android:layout_height="wrap_content"
+                                               android:id="@+id/rview4">
+    </androidx.recyclerview.widget.RecyclerView>
+   </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -17,12 +17,7 @@ android:id="@+id/root">
                                        android:layout_height="?actionBarSize"
                                        android:id="@+id/toolbar"
                                        android:background="@color/colorPrimary">
-        <!--<androidx.appcompat.widget.SearchView android:layout_width="wrap_content"-->
-                                              <!--android:layout_height="wrap_content"-->
 
-        <!--android:id="@+id/searchview">-->
-
-        <!--</androidx.appcompat.widget.SearchView>-->
     </androidx.appcompat.widget.Toolbar>
     <ProgressBar android:layout_width="match_parent" android:layout_height="wrap_content"
                  android:id="@+id/prg"

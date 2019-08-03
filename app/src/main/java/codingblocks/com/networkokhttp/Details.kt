@@ -245,7 +245,8 @@ class Details : AppCompatActivity() {
 
 reviews.setOnClickListener {
     val k=Intent(this,Reviews::class.java)
-    k.putExtra("moviedID",pos)
+    k.putExtra("ID",pos)
+    k.putExtra("type","movie")
     startActivity(k)
 }
     }

@@ -16,6 +16,5 @@ data class GithubResponse(
 	val vote_average:Float,
 val poster_path:String,
 	val backdrop_path :String
-
 )
 		data class Github2(val results:ArrayList<GithubResponse>)
