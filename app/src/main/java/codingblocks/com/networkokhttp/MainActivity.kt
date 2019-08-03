@@ -299,7 +299,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             R.id.fav -> {
                 val l = Intent(this, Room::class.java)
-//                l.putExtra("favlist", 1)
+                l.putExtra("type", "movie")
+                startActivity(l)
+            }
+            R.id.favtv->{
+                val l = Intent(this, Room::class.java)
+                l.putExtra("type", "tv")
                 startActivity(l)
             }
             R.id.about -> {

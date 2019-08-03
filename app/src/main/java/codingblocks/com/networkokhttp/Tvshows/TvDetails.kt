@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.room.Room
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import codingblocks.com.networkokhttp.*
 import codingblocks.com.networkokhttp.ProductionCompanies
@@ -19,6 +21,12 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class TvDetails : AppCompatActivity() {
+    val db2 by lazy {
+        Room.databaseBuilder(this,AppDatabase2::class.java,"todo2.db")
+            .allowMainThreadQueries()
+            .fallbackToDestructiveMigration()
+            .build()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +35,16 @@ class TvDetails : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         val pos = intent.getIntExtra("ID", 55)
         Log.i("pos",pos.toString())
+        val check = db2.tododao().checkrepeat(pos)
+//        favbt.isChecked = check.isNotEmpty()
+        if(check.isNotEmpty()) {
+            favfill.visibility = View.VISIBLE
+            favborder.visibility=View.GONE
+        }
+        else if (check.isEmpty()){
+            favborder.visibility = View.VISIBLE
+            favfill.visibility=View.GONE
+        }
         val retrofitClient = Retrofit.Builder()
             .baseUrl("https://api.themoviedb.org/3/tv/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -45,6 +63,18 @@ class TvDetails : AppCompatActivity() {
                 response: Response<Basicdetails>
             ) {
                 runOnUiThread {
+                    favborder.setOnClickListener {
+                        db2.tododao().insert(Todo(id = pos))
+                        Toast.makeText(this@TvDetails, "TV Show is added in favourites!", Toast.LENGTH_LONG).show()
+                        favfill.visibility=View.VISIBLE
+                        favborder.visibility=View.GONE
+                    }
+                    favfill.setOnClickListener {
+                        db2.tododao().deletetask(Todo(id = pos))
+                        Toast.makeText(this@TvDetails, "TV Show is removed from favourites!", Toast.LENGTH_LONG).show()
+                        favborder.visibility=View.VISIBLE
+                        favfill.visibility=View.GONE
+                    }
 //                    if(response.body()?.production_companies!!.isEmpty()){
 //                        tvproduction.visibility=View.GONE
 //                    }

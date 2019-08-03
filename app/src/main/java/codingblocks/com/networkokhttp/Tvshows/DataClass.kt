@@ -14,6 +14,7 @@ data class Basicdetails(
     val name:String,
     val homepage:String,
     val backdrop_path:String,
+    val poster_path: String,
     val first_air_date:String,
     val genres:ArrayList<Genres>,
     val id:Int,

@@ -4,6 +4,8 @@
       tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+        <item android:title="Entertainment">
+            <menu>
         <item
                 android:id="@+id/movies"
                 android:icon="@drawable/ic_local_movies_black_24dp"
@@ -12,14 +14,29 @@
         <item android:id="@+id/tvshows"
               android:icon="@drawable/ic_ondemand_video_black_24dp"
               android:title="TV Shows"/>
+            </menu>
+        </item>
+<item android:title="Favourites">
+    <menu>
         <item
                 android:id="@+id/fav"
                 android:icon="@drawable/ic_favorite_black_24dp"
-                android:title="Favourites"/>
+                android:title="Favourite Movies"/>
+        <item
+            android:id="@+id/favtv"
+            android:icon="@drawable/ic_favorite_black_24dp"
+        android:title="Favourite TV Shows"/>
+    </menu>
+</item>
+        <item android:title="General">
+            <menu>
+       
         <item
                 android:id="@+id/about"
                 android:icon="@drawable/ic_info_outline_black_24dp"
                 android:title="About"/>
-
+</menu>
+        </item>
     </group>
+
 </menu>
