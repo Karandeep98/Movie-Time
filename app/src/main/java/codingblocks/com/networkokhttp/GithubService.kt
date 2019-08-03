@@ -41,7 +41,10 @@ interface GithubService {
     @GET("person/{Id}/movie_credits?api_key=b315d3231fba4b90ca67901413855fb7&language=en-US")
     fun moviecast(@Path("Id")id:Int):Call<Moviecastarray>
 
-    @GET("search/movie?api_key=b315d3231fba4b90ca67901413855fb7&language=en-US&query&page=1&include_adult=false")
+    @GET("person/{Id}/tv_credits?api_key=b315d3231fba4b90ca67901413855fb7&language=en-US")
+    fun tvcast(@Path("Id")id:Int):Call<TVcastArray>
+
+    @GET("search/multi?api_key=b315d3231fba4b90ca67901413855fb7&language=en-US&query&page=1&include_adult=false")
     fun search(@Query("query")q:String):Call<Searcharray>
 
     @GET("{type}/{Id}/reviews?api_key=b315d3231fba4b90ca67901413855fb7&language=en-US&page=1")

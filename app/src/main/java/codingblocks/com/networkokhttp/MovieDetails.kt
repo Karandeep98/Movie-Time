@@ -52,9 +52,20 @@ data class Moviecast(
     val id:Int
 )
 data class Moviecastarray(val cast:ArrayList<Moviecast>)
+data class Tvcast(
+    val name:String,
+    val character: String,
+    val poster_path:String,
+    val id:Int
+)
+data class TVcastArray(val cast:ArrayList<Tvcast>)
 
 data class Searchdetails(
     val title:String,
+    val media_type:String,
+    val name:String,
+    val profile_path:String,
+    val first_air_date:String,
     val poster_path:String,
     val overview: String,
     val release_date:String,

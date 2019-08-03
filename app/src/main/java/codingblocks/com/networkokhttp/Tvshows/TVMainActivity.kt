@@ -3,8 +3,10 @@ package codingblocks.com.networkokhttp.Tvshows
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,6 +16,9 @@ import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_tvmain.*
 import kotlinx.android.synthetic.main.navigation_tv.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -49,6 +54,49 @@ class TVMainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelec
         }
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+
+    private var doubleBackPressed = false
+    override fun onBackPressed() {
+
+//        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+        if (doubleBackPressed) {
+//            super.onBackPressed()
+            finishAffinity()
+        }
+        else {
+            if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
+                drawer_layout.closeDrawer(GravityCompat.START)
+            }
+            else{
+                doubleBackPressed = true
+                Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show()
+                GlobalScope.launch {
+                    delay(2000)
+                    doubleBackPressed = false
+                }
+            }
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main,menu)
+        val searchitem=menu?.findItem(R.id.menu_search)
+        val searchview=searchitem?.actionView as androidx.appcompat.widget.SearchView
+        searchview.queryHint="Search Movies,TV Shows,Actors"
+        searchview.setOnQueryTextListener(object: androidx.appcompat.widget.SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                val a= Intent(this@TVMainActivity,Search::class.java)
+                a.putExtra("searchtext",p0)
+                startActivity(a)
+                return true
+            }
+            override fun onQueryTextChange(p0: String?): Boolean {
+                return true
+            }
+        })
+        return super.onCreateOptionsMenu(menu)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

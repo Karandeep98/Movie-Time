@@ -29,6 +29,8 @@
     android:textStyle="bold"/>
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
               android:id="@+id/releasetv"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:id="@+id/mediatype"/>
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
               android:maxLines="6"
               android:id="@+id/overviewtv"/>

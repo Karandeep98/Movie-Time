@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         menuInflater.inflate(R.menu.main,menu)
         val searchitem=menu?.findItem(R.id.menu_search)
         val searchview=searchitem?.actionView as androidx.appcompat.widget.SearchView
-        searchview.queryHint="Search Movies"
+        searchview.queryHint="Search Movies,TV Shows,Actors"
         searchview.setOnQueryTextListener(object: androidx.appcompat.widget.SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 val a= Intent(this@MainActivity,Search::class.java)

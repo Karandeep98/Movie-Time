@@ -52,7 +52,9 @@ class ViewAllTvShows : AppCompatActivity() {
                         ) {
 
                             runOnUiThread {
-                                list.addAll(response.body()!!.results)
+                                list.addAll(response.body()!!.results.filter {
+                                    it.original_language!="ja"&&it.backdrop_path!=null
+                                })
 
                                 (rview.adapter as ViewallTvShowsAdapter).notifyDataSetChanged()
                                 prg.visibility= View.GONE
@@ -75,7 +77,9 @@ class ViewAllTvShows : AppCompatActivity() {
                             response: Response<OverviewTvarray>
                         ) {
                             runOnUiThread {
-                                list.addAll(response.body()!!.results)
+                                list.addAll(response.body()!!.results.filter {
+                                    it.original_language!="ja"&&it.backdrop_path!=null
+                                })
 
                                 (rview.adapter as ViewallTvShowsAdapter).notifyDataSetChanged()
                                 prg.visibility=View.GONE
@@ -96,7 +100,9 @@ class ViewAllTvShows : AppCompatActivity() {
                             response: Response<OverviewTvarray>
                         ) {
                             runOnUiThread {
-                                list.addAll(response.body()!!.results)
+                                list.addAll(response.body()!!.results.filter {
+                                    it.original_language!="ja"&&it.backdrop_path!=null
+                                })
 
                                 (rview.adapter as ViewallTvShowsAdapter).notifyDataSetChanged()
                                 prg.visibility=View.GONE
@@ -118,7 +124,9 @@ class ViewAllTvShows : AppCompatActivity() {
                             response: Response<OverviewTvarray>
                         ) {
                             runOnUiThread {
-                                list.addAll(response.body()!!.results)
+                                list.addAll(response.body()!!.results.filter {
+                                    it.original_language!=null&&it.backdrop_path!=null
+                                })
 
                                 (rview.adapter as ViewallTvShowsAdapter).notifyDataSetChanged()
                                 prg.visibility = View.GONE
