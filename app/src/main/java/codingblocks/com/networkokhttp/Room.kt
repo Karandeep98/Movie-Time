@@ -62,7 +62,7 @@ class Room : AppCompatActivity() {
             emptyimg.visibility = View.VISIBLE
             tvempty.visibility = View.VISIBLE
         }
-
+            tv.text="Favourite Movies"
         rview.layoutManager = GridLayoutManager(this, 3, RecyclerView.VERTICAL, false)
         rview.adapter = TaskAdapter(this, list)
     }
@@ -72,7 +72,7 @@ class Room : AppCompatActivity() {
                 emptyimg.visibility = View.VISIBLE
                 tvempty.visibility = View.VISIBLE
             }
-
+            tv.text="Favourite TV Shows"
             rview.layoutManager = GridLayoutManager(this, 3, RecyclerView.VERTICAL, false)
             rview.adapter = TaskAdapterTvshows(this, list2)
             }

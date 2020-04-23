@@ -26,6 +26,7 @@ class MovieAdapter2( val context: Context, private val arrayList: ArrayList<Trai
         holder.bind(user, position)
     }
 }
+
   class GithubViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(user: Trailers, position: Int) {
@@ -38,12 +39,13 @@ class MovieAdapter2( val context: Context, private val arrayList: ArrayList<Trai
             bt.setOnClickListener {
                 val j=Intent(context,Youtubeplay::class.java)
                 j.putExtra("path",user.key)
-//                val j= Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v="+user.key))
+
+
+//               val j= Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v="+user.key))
+
                 context.startActivity(j)
             }
-
         }
-
     }
 }
 

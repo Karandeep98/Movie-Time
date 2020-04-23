@@ -10,7 +10,7 @@
                                        app:title="Favourites"
                                        android:background="@color/colorPrimary"/>
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                  android:text="Favourite Movies"
+                android:id="@+id/tv"
                   android:textStyle="bold"
                   android:textSize="24sp"
                   android:gravity="center"

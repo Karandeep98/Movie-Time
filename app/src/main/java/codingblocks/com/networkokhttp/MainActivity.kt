@@ -178,7 +178,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 //                tv.text="Loading failed!"
 //                tv.text=tv.text.toString()+t.cause?.toString()
                 Snackbar.make(root,"No Internet Connection",Snackbar.LENGTH_INDEFINITE).show()
-
             }
 
             override fun onResponse(

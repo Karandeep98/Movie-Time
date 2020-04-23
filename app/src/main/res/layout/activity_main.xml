@@ -9,16 +9,18 @@
 android:orientation="vertical"
 android:id="@+id/root">
 
-    <!--<include-->
             <!--layout="@layout/activity_navigation"-->
+            <!--<include-->
             <!--android:layout_width="wrap_content"-->
             <!--android:layout_height="wrap_content"/>-->
-    <androidx.appcompat.widget.Toolbar android:layout_width="match_parent"
-                                       android:layout_height="?actionBarSize"
-                                       android:id="@+id/toolbar"
-                                       android:background="@color/colorPrimary">
 
-    </androidx.appcompat.widget.Toolbar>
+    <androidx.appcompat.widget.Toolbar android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:id="@+id/toolbar"
+        app:titleTextColor="@color/white"
+        android:background="@color/colorPrimary">
+
+</androidx.appcompat.widget.Toolbar>
     <ProgressBar android:layout_width="match_parent" android:layout_height="wrap_content"
                  android:id="@+id/prg"
                  android:layout_gravity="center_vertical|center_horizontal"

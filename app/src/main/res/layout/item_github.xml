@@ -14,11 +14,15 @@
             app:cardBackgroundColor="@color/cardview_light_background"
             app:cardElevation="10dp"
             app:cardCornerRadius="5dp"
+            android:layout_weight="1"
     android:layout_margin="10dp">
-<FrameLayout android:layout_width="350dp" android:layout_height="wrap_content">
 
 
-        <ImageView android:layout_width="350dp" android:layout_height="211dp"
+
+
+    <FrameLayout android:layout_width="350dp" android:layout_height="wrap_content"
+    >
+        <ImageView android:layout_width="match_parent" android:layout_height="211dp"
                    android:id="@+id/img"
                    android:background="@color/gray"
         android:tint="@color/black"
@@ -55,7 +59,8 @@
               <!--android:layout_marginLeft="10dp"-->
               <!--android:textColor="@color/white"-->
               <!--android:layout_marginTop="20dp"/>-->
-</FrameLayout>
+    </FrameLayout>
+
     </androidx.cardview.widget.CardView>
 
 
