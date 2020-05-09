@@ -3,6 +3,7 @@
 
 The APK of the app is available [here](https://drive.google.com/file/d/17-3-RWhkF0DlFSxsoRSnjMn2EI0MGzcb/view?usp=sharing).
 
+**Hope you guys will like this app ! Show some ❤️ and star the repo to support the project !**
 ## Screenshots
 <img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(60).png?raw=true" width="210">|
 <img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(61).png?raw=true" width="210">|
@@ -19,3 +20,15 @@ The APK of the app is available [here](https://drive.google.com/file/d/17-3-RWhk
 <img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(72).png?raw=true" width="210">|
 <img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(74).png?raw=true" width="210">|
 <img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(75).png?raw=true" width="210">|
+### Found this project useful? 
+
+If you found this project useful, then please consider giving it a :star: on Github and sharing it with your friends via social media.
+
+## Project Created & Maintained By
+
+### Karandeep Singh
+**Android Developer**  #Android Developer, #Passionate
+
+<a href="https://www.linkedin.com/in/karandeep-singh-24a952190/"><img src="https://github.com/aritraroy/social-icons/blob/master/linkedin-icon.png?raw=true" width="60"></a>
+
+© 2020 Karandeep Singh. All rights reserved.
