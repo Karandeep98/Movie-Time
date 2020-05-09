@@ -29,6 +29,6 @@ If you found this project useful, then please consider giving it a :star: on Git
 ### Karandeep Singh
 **Android Developer**  #Android Developer, #Passionate
 
-<a href="https://www.linkedin.com/in/karandeep-singh-24a952190/"><img src="https://github.com/aritraroy/social-icons/blob/master/linkedin-icon.png?raw=true" width="60"></a>
+<a href="https://www.linkedin.com/in/karandeep98/"><img src="https://github.com/aritraroy/social-icons/blob/master/linkedin-icon.png?raw=true" width="60"></a>
 
 © 2020 Karandeep Singh. All rights reserved.
