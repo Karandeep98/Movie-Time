@@ -14,3 +14,8 @@ The APK of the app is available [here](https://drive.google.com/file/d/17-3-RWhk
 <img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(67).png?raw=true" width="210">|
 <img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(68).png?raw=true" width="210">|
 <img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(69).png?raw=true" width="210">|
+<img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(70).png?raw=true" width="210">|
+<img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(71).png?raw=true" width="210">|
+<img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(72).png?raw=true" width="210">|
+<img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(74).png?raw=true" width="210">|
+<img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(75).png?raw=true" width="210">|
