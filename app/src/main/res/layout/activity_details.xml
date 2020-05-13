@@ -11,6 +11,7 @@ android:id="@+id/root">
     <androidx.appcompat.widget.Toolbar android:layout_width="match_parent"
                                        android:layout_height="?actionBarSize"
                                        android:id="@+id/toolbar"
+                                        app:titleTextColor="@color/white"
                                        android:background="@color/colorPrimary">
 
     </androidx.appcompat.widget.Toolbar>
@@ -49,10 +50,17 @@ android:textSize="18sp"
 android:id="@+id/tvtitle"
 android:gravity="center"
 android:layout_marginTop="10dp"/>
+
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
             android:textSize="16sp"
             android:id="@+id/tv"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@color/fullblack"
+                  android:textStyle="italic|bold"
+                    android:justificationMode="inter_word"
+                    />
             <!--<CheckBox android:layout_width="match_parent" android:layout_height="wrap_content"-->
             <!--android:id="@+id/favbt"-->
             <!--android:text="Mark as Favourite"/>-->
@@ -66,7 +74,10 @@ android:layout_marginTop="10dp"/>
             android:id="@+id/favfill"
             android:layout_marginLeft="10dp"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="Mark as Favourite"/>
+            android:text="Mark as Favourite"
+                    android:layout_marginLeft="10dp"
+                    android:textStyle="bold|italic"
+                    android:textColor="@color/fullblack"/>
             <!--<Button android:layout_width="match_parent" android:layout_height="wrap_content"-->
             <!--android:text="Add to Favourites"-->
             <!--android:id="@+id/favbt"/>-->
@@ -109,12 +120,17 @@ android:layout_marginTop="10dp"/>
                                                        android:layout_height="wrap_content"
                                                        android:layout_weight="1"
                                                        android:id="@+id/rviewproduction"/>
-            <Button android:layout_width="match_parent" android:layout_height="wrap_content"
+            <Button android:layout_width="match_parent" android:layout_height="?actionBarSize"
                       android:text="see User Reviews"
                       android:gravity="center"
-                      android:textSize="25sp"
+                     android:textColor="@color/white"
+                    android:background="@drawable/round_button"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginRight="70dp"
                       android:textStyle="italic"
+                    android:textSize="20sp"
                       android:layout_marginTop="30dp"
+
                       android:id="@+id/reviews"
             />
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"

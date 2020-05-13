@@ -4,5 +4,6 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <string name="developerinfo">This app shows the details of more than One Million Movies and TV shows in a user friendly way.\n\nCredits:\nDeveloper: Karandeep Singh\nData fetched from <a href="https://www.themoviedb.org/?language=en-US">The MovieDB API</a>\nApp Version: 2.1.2\n Code is open source at <a href="https://github.com/Karandeep98">GitHub</a>\nTo give your suggestions, click 👇</string>
 
 </resources>

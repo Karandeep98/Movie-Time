@@ -10,6 +10,7 @@ android:orientation="vertical">
     <androidx.appcompat.widget.Toolbar android:layout_width="match_parent"
                                        android:layout_height="?actionBarSize"
                                        android:id="@+id/toolbar"
+            app:titleTextColor="@color/white"
                                        android:background="@color/colorPrimary">
 
     </androidx.appcompat.widget.Toolbar>
@@ -35,11 +36,14 @@ android:orientation="horizontal">
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
     android:text="\nAge: "
     android:textSize="16sp"
-    android:textStyle="bold"/>
+    android:textStyle="bold|italic"
+            android:textColor="@color/fullblack"
+            android:layout_marginLeft="10dp"/>
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
     android:id="@+id/tv"
     android:textSize="16sp"
-    android:visibility="gone"/>
+    android:visibility="gone"
+            />
 </LinearLayout>
             <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -47,11 +51,14 @@ android:orientation="horizontal">
 
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
             android:text="\nBirthPlace: "
-            android:textStyle="bold"
+            android:textStyle="bold|italic"
+                    android:textColor="@color/fullblack"
+                    android:layout_marginLeft="10dp"
             android:textSize="16sp"/>
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:id="@+id/tv2"
                 android:textSize="16sp"
+
                 android:textStyle="italic"
                 android:visibility="gone"/>
             </LinearLayout>
@@ -59,7 +66,9 @@ android:orientation="horizontal">
             android:textStyle="bold"
             android:textSize="20sp"
             android:text="\nBiography:\n "
+                    android:textColor="@color/fullblack"
             android:gravity="center"
+
             android:id="@+id/tv4"
             android:visibility="gone"/>
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
@@ -72,7 +81,10 @@ android:orientation="horizontal">
             android:layout_marginTop="10dp"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:id="@+id/tv3"
-            android:textStyle="italic"
+            android:textStyle="italic|bold"
+                    android:justificationMode="inter_word"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
             android:visibility="gone"/>
     <TextView android:layout_width="match_parent" android:layout_height="match_parent"
     android:text="Movie Cast"

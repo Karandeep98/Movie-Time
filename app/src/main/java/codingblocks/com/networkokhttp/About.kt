@@ -4,21 +4,28 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
 import kotlinx.android.synthetic.main.activity_about.*
+import java.util.*
 
 class About : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about)
-        toolbar.title="About"
-        setSupportActionBar(toolbar)
+        setupHyperlink()
+        tb.title="About"
+        setSupportActionBar(tb)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        feedbackbutton.setOnClickListener {
+
+        bt.setOnClickListener {
             val i = Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:karandeep041998@gmail.com"))
-//            i.putExtra(Intent.EXTRA_SUBJECT, "Hello There!")
-//            i.putExtra(Intent.EXTRA_TEXT, "Hello Noobs!")
-            startActivity(Intent.createChooser(i, "Send Email"))
+           startActivity(Intent.createChooser(i, "Send Email"))
         }
+    }
+    private fun setupHyperlink() {
+
+        tv.setMovementMethod(LinkMovementMethod.getInstance())
+        //        linkTextView.setLinkTextColor(Color.);
     }
 }
