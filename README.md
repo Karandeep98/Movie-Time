@@ -1,9 +1,23 @@
-# IMBD Android App
+# Movie Time App
 <br>This app displays the information of more than 6 Million Movies and TV shows in a user friendly way<br>
 
 The APK of the app is available [here](https://drive.google.com/file/d/17-3-RWhkF0DlFSxsoRSnjMn2EI0MGzcb/view?usp=sharing).
 
 **Hope you guys will like this app ! Show some ❤️ and star the repo to support the project !**
+
+# App preview 
+<p align="center">
+<img align="left"  src="https://github.com/Karandeep98/Movie-Time/blob/master/images/video1.gif" width="220" height="460"  />|
+  <img src="https://github.com/Karandeep98/Movie-Time/blob/master/images/video2.gif" width="220" height="460" />|
+ <img align="right"  src="https://github.com/Karandeep98/Movie-Time/blob/master/images/video3.gif" width="220" height="460"  />
+  </p>
+  
+  <p align="center">
+<img align="left"  src="https://github.com/Karandeep98/Movie-Time/blob/master/images/video4.gif" width="220" height="460"  />|
+  <img src="https://github.com/Karandeep98/Movie-Time/blob/master/images/video5.gif" width="220" height="460" />|
+ <img align="right"  src="https://github.com/Karandeep98/Movie-Time/blob/master/images/video6.gif" width="220" height="460"  />
+  </p>
+
 ## Screenshots
 <img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(60).png?raw=true" width="210">|
 <img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(61).png?raw=true" width="210">|
