@@ -1,7 +1,19 @@
 # Movie Time App
 <br>This app displays the information of more than 6 Million Movies and TV shows in a user friendly way<br>
 
-The APK of the app is available [here](https://drive.google.com/file/d/17-3-RWhkF0DlFSxsoRSnjMn2EI0MGzcb/view?usp=sharing).
+# Features
+ 
+* Rating and Plot Description of each movie
+* Detailed Description of each Movie/Tv show
+* User Reviews for each Movie/Tv show
+* Suggesting similar movies/Tv shows based on current selection
+* Details of various cast members along with their profile
+* Search Movies/Tv shows directly 
+* Add Movies/Tv shows as favourites
+* Watch trailers/Bloopers of all movies/TV shows 
+
+
+## Download the app from [here](https://github.com/Karandeep98/Weather/raw/master/apk/weather%20app.apk).
 
 **Hope you guys will like this app ! Show some ❤️ and star the repo to support the project !**
 
