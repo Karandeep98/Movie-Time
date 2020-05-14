@@ -1,5 +1,6 @@
 # Movie Time App
 <br>This app displays the information of more than 6 Million Movies and TV shows in a user friendly way<br>
+**Hope you guys will like this app ! Show some ❤️ and star the repo to support the project !**
 
 # Features
 
@@ -12,10 +13,7 @@
 * Add Movies/Tv shows as favourites
 * Watch trailers/Bloopers of all movies/TV shows 
 
-
 ## Download the app from [here](https://github.com/Karandeep98/Movie-Time/raw/master/apk/Movie%20Time.apk).
-
-**Hope you guys will like this app ! Show some ❤️ and star the repo to support the project !**
 
 # App preview 
 <p align="center">
@@ -31,6 +29,7 @@
   </p>
 
 ## Screenshots
+
 <img src="https://github.com/Karandeep98/Movie-Time/blob/master/images/photo1.png?raw=true" width="210">|
 <img src="https://github.com/Karandeep98/Movie-Time/blob/master/images/photo2.png?raw=true" width="210">|
 <img src="https://github.com/Karandeep98/Movie-Time/blob/master/images/photo3.png?raw=true" width="210">|
@@ -40,7 +39,7 @@
 <img src="https://github.com/Karandeep98/Movie-Time/blob/master/images/photo7.png?raw=true" width="210">|
 <img src="https://github.com/Karandeep98/Movie-Time/blob/master/images/photo8.png?raw=true" width="210">|
 
-### Found this project useful? 
+## Found this project useful? 
 
 If you found this project useful, then please consider giving it a :star: on Github and sharing it with your friends via social media.
 
@@ -50,5 +49,7 @@ If you found this project useful, then please consider giving it a :star: on Git
 **Android Developer**  #Android Developer, #Passionate
 
 <a href="https://www.linkedin.com/in/karandeep98/"><img src="https://github.com/aritraroy/social-icons/blob/master/linkedin-icon.png?raw=true" width="60"></a>
+<a href="https://www.facebook.com/karandeep.bindra"><img src="https://github.com/aritraroy/social-icons/blob/master/facebook-icon.png?raw=true" width="60"></a>
+<a href="https://www.instagram.com/karandeep_singh04/"><img src="https://github.com/aritraroy/social-icons/blob/master/instagram-icon.png?raw=true" width="60"></a>
 
-© 2020 Karandeep Singh. All rights reserved.
+## © 2020 Karandeep Singh. All rights reserved.
