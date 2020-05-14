@@ -31,21 +31,15 @@
   </p>
 
 ## Screenshots
-<img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(60).png?raw=true" width="210">|
-<img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(61).png?raw=true" width="210">|
-<img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(62).png?raw=true" width="210">|
-<img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(63).png?raw=true" width="210">|
-<img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(64).png?raw=true" width="210">|
-<img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(65).png?raw=true" width="210">|
-<img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(66).png?raw=true" width="210">|
-<img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(67).png?raw=true" width="210">|
-<img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(68).png?raw=true" width="210">|
-<img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(69).png?raw=true" width="210">|
-<img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(70).png?raw=true" width="210">|
-<img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(71).png?raw=true" width="210">|
-<img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(72).png?raw=true" width="210">|
-<img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(74).png?raw=true" width="210">|
-<img src="https://github.com/Karandeep98/NetworkingRetrofit-Popcorn-/blob/master/images/Screenshot%20(75).png?raw=true" width="210">|
+<img src="https://github.com/Karandeep98/Movie-Time/blob/master/images/photo1.png?raw=true" width="210">|
+<img src="https://github.com/Karandeep98/Movie-Time/blob/master/images/photo2.png?raw=true" width="210">|
+<img src="https://github.com/Karandeep98/Movie-Time/blob/master/images/photo3.png?raw=true" width="210">|
+<img src="https://github.com/Karandeep98/Movie-Time/blob/master/images/photo4.png?raw=true" width="210">|
+<img src="https://github.com/Karandeep98/Movie-Time/blob/master/images/photo5.png?raw=true" width="210">|
+<img src="https://github.com/Karandeep98/Movie-Time/blob/master/images/photo6.png?raw=true" width="210">|
+<img src="https://github.com/Karandeep98/Movie-Time/blob/master/images/photo7.png?raw=true" width="210">|
+<img src="https://github.com/Karandeep98/Movie-Time/blob/master/images/photo8.png?raw=true" width="210">|
+
 ### Found this project useful? 
 
 If you found this project useful, then please consider giving it a :star: on Github and sharing it with your friends via social media.
